@@ -5,4 +5,9 @@
     <dimen name="write_width">40dp</dimen>
     <dimen name="toolBarTopMargin">20dp</dimen>
     <dimen name="toolBarDialogHeight">50dp</dimen>
+
+    <!-- RecyclerView分隔线或其他分割线的高度 -->
+    <dimen name="default_divider_height">0.3px</dimen>
+    <!-- RecyclerView或其他控件默认边距 -->
+    <dimen name="default_divider_padding">10dp</dimen>
 </resources>

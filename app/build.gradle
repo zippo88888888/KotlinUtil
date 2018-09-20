@@ -3,27 +3,25 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion compile_sdk_version
+    buildToolsVersion "$builder_version"
     defaultConfig {
         applicationId "com.zp.rx_java_t"
         minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion compile_sdk_version
+        versionCode vCode
+        versionName "$vName"
     }
     buildTypes {
         debug {
-
+            buildConfigField "Boolean", "IS_OFFICIAL", "false"
             ndk {
                 //设置支持的SO库架构
                 abiFilters "armeabi-v7a"
             }
-
-            buildConfigField "Boolean", "IS_OFFICIAL", "false"
         }
         release {
-
+            buildConfigField "Boolean", "IS_OFFICIAL", "true"
             ndk {
                 //设置支持的SO库架构
                 abiFilters "armeabi-v7a"
@@ -34,7 +32,6 @@ android {
             shrinkResources false
 
             minifyEnabled false
-            buildConfigField "Boolean", "IS_OFFICIAL", "true"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
