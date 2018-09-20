@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 57dp 65dp -->
+    <dimen name="toolBarHeight">77dp</dimen>
+    <dimen name="write_width">40dp</dimen>
+    <dimen name="toolBarTopMargin">20dp</dimen>
+    <dimen name="toolBarDialogHeight">50dp</dimen>
+</resources>

@@ -1,0 +1,49 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.zp.rx_java_t"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        debug {
+
+            ndk {
+                //设置支持的SO库架构
+                abiFilters "armeabi-v7a"
+            }
+
+            buildConfigField "Boolean", "IS_OFFICIAL", "false"
+        }
+        release {
+
+            ndk {
+                //设置支持的SO库架构
+                abiFilters "armeabi-v7a"
+            }
+            // zip优化
+            zipAlignEnabled true
+            // 删除无用的资源
+            shrinkResources false
+
+            minifyEnabled false
+            buildConfigField "Boolean", "IS_OFFICIAL", "true"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$android_version"
+    implementation "com.android.support:design:$android_version"
+    implementation "com.android.support:support-v4:$android_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+}
