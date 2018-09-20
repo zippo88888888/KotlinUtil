@@ -5,6 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BuilderDialog
+import com.zp.rx_java_t.base.CommonDialog
 import com.zp.rx_java_t.content.getColorById
 import com.zp.rx_java_t.content.toast
 import com.zp.rx_java_t.content.toast2
@@ -28,14 +29,20 @@ class MainActivity : BaseActivity() {
             BuilderDialog.create()
                     .setDialogFM(supportFragmentManager)
                     .setContentView(R.layout.dialog_test)
-                    .setInitLogic {
-                        it.findViewById<ImageView>(R.id.dialog_permission_close).setOnClickListener { toast("close") }
-                        it.findViewById<TextView>(R.id.dialog_permission_down).setOnClickListener { toast("down") }
+                    .setInitLogic { v, dialog ->
+                        v.findViewById<ImageView>(R.id.dialog_permission_close).setOnClickListener { dialog.dismiss() }
+                        v.findViewById<TextView>(R.id.dialog_permission_down).setOnClickListener { showDialog() }
                     }
                     .setDismissLogic {
                         toast2("dialog 销毁", Toaster.C, Toaster.LONG, R.color.black)
                     }
                     .show()
+        }
+    }
+
+    private fun showDialog() {
+        CommonDialog(this).apply {
+            showDialog1({ toast("确定") }, "申请权限", "确定")
         }
     }
 

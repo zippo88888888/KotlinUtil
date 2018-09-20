@@ -14,8 +14,7 @@ import android.view.ViewGroup
 class BuilderDialog : BaseDialog<BuilderDialog>() {
 
     private var contentView = 0
-    private var dismissIDs: IntArray? = null
-    private var logic: ((View) -> Unit)? = null
+    private var logic: ((View, Dialog) -> Unit)? = null
 
     companion object {
 
@@ -28,7 +27,7 @@ class BuilderDialog : BaseDialog<BuilderDialog>() {
     override fun getContentView() = contentView
 
     override fun init(view: View, savedInstanceState: Bundle?) {
-        logic?.invoke(view)
+        logic?.invoke(view, dialog)
     }
 
     override fun getDialog(savedInstanceState: Bundle?, style: Int) =
@@ -44,16 +43,8 @@ class BuilderDialog : BaseDialog<BuilderDialog>() {
     /**
      * 处理初始化的逻辑
      */
-    fun setInitLogic(logic: ((View) -> Unit)?): BuilderDialog {
+    fun setInitLogic(logic: ((View, Dialog) -> Unit)?): BuilderDialog {
         this.logic = logic
-        return this
-    }
-
-    /**
-     * 设置点击需要销毁的ID
-     */
-    fun setDismissId(vararg viewID: Int): BuilderDialog {
-        this.dismissIDs = viewID
         return this
     }
 }
