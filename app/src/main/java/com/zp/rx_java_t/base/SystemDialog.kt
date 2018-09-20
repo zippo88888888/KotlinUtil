@@ -4,7 +4,7 @@ import android.content.Context
 import android.support.v7.app.AlertDialog
 import java.lang.ref.SoftReference
 
-class CommonDialog(context: Context, private var isUserDefaultTitle: Boolean = true) {
+class SystemDialog(context: Context, private var isUserDefaultTitle: Boolean = true) {
 
     private val reference: SoftReference<Context> by lazy { SoftReference(context) }
 

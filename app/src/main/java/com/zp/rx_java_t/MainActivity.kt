@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BuilderDialog
-import com.zp.rx_java_t.base.CommonDialog
+import com.zp.rx_java_t.base.SystemDialog
 import com.zp.rx_java_t.content.getColorById
 import com.zp.rx_java_t.content.toast
 import com.zp.rx_java_t.content.toast2
@@ -20,7 +20,7 @@ class MainActivity : BaseActivity() {
     override fun getContentView() = R.layout.activity_main
 
     override fun init(savedInstanceState: Bundle?) {
-        setBarTitle("abc")
+        setBarTitle("Kotlin 相关")
         window.statusBarColor = getColorById(R.color.baseColor)
         main_show.setOnClickListener {
             toast2(main_show.text, Toaster.T)
@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
     }
 
     private fun showDialog() {
-        CommonDialog(this).apply {
+        SystemDialog(this).apply {
             showDialog1({ toast("确定") }, "申请权限", "确定")
         }
     }
