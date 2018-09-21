@@ -22,6 +22,10 @@ import org.jetbrains.annotations.NotNull
  */
 object MessageUtil {
 
+    init {
+        TODO("目前该类只测试过Android 8.0,7.0,6.0,5.0的通知，其他版本还未测试，理论上来说都可以的！")
+    }
+
     private const val SP_KEY_PET_ALL_MESSAGE_STR = "all_message_key"
 
     /** 互动消息 ID */
