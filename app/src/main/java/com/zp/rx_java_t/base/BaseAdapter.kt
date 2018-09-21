@@ -11,10 +11,9 @@ import android.view.ViewGroup
  * description:
  * version: 1.0
  */
-abstract class BaseAdapter<T>(context: Context) : RecyclerView.Adapter<BaseViewHolder>() {
+abstract class BaseAdapter<T>(protected var context: Context) : RecyclerView.Adapter<BaseViewHolder>() {
 
     private var layoutID = -1
-    protected var context: Context
     var datas: ArrayList<T> = ArrayList()
         set(value) {
             if (value.isNotEmpty()) {
@@ -24,10 +23,7 @@ abstract class BaseAdapter<T>(context: Context) : RecyclerView.Adapter<BaseViewH
             }
         }
 
-    init { this.context = context }
-
     constructor(context: Context, layoutID: Int) : this(context) {
-        this.context = context
         this.layoutID = layoutID
     }
 
