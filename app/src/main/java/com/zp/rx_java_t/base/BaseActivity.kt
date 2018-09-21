@@ -44,9 +44,12 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         if (item?.itemId == android.R.id.home) {
-            onBackPressed()
+            back()
         }
         return super.onOptionsItemSelected(item)
     }
 
+    protected open fun back() {
+        onBackPressed()
+    }
 }

@@ -9,10 +9,7 @@ import android.widget.TextView
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.zp.rx_java_t.R
-import com.zp.rx_java_t.content.getColorById
-import com.zp.rx_java_t.content.getDisplay
-import com.zp.rx_java_t.content.getStatusBarHeight
-import com.zp.rx_java_t.content.getToolBarHeight
+import com.zp.rx_java_t.content.*
 
 @Suppress("SENSELESS_COMPARISON")
 class Toaster(con: Context) : Toast(con) {
@@ -37,18 +34,12 @@ class Toaster(con: Context) : Toast(con) {
             if (toast != null) toast?.cancel()
         }
 
-        private fun getText(str: Any) = when (str) {
-            is String -> str
-            is Int -> applicationCon.resources.getString(str)
-            else -> str.toString()
-        }
-
         /**
          * 系统自带的 消息提醒
          */
         fun makeTextS(str: Any, duration: Int = SHORT) {
             checkToast()
-            toast = makeText(applicationCon, getText(str), duration)
+            toast = makeText(applicationCon, getTextValue(str), duration)
             toast?.show()
         }
 
@@ -73,7 +64,7 @@ class Toaster(con: Context) : Toast(con) {
                 translationY = -300f
                 animate().translationY(0f).duration = 300
                 findViewById<TextView>(R.id.toast_msg).apply {
-                    text = getText(str)
+                    text = getTextValue(str)
                     setBackgroundColor(getColorById(bgColor))
                     layoutParams = LinearLayout.LayoutParams(applicationCon.getDisplay()[0], ViewGroup.LayoutParams.WRAP_CONTENT)
                 }

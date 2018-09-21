@@ -7,6 +7,12 @@
     <include layout="@layout/layout_tool_bar" />
 
     <Button
+        android:id="@+id/main_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="list"/>
+
+    <Button
         android:id="@+id/main_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

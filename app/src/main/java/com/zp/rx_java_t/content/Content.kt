@@ -1,19 +1,21 @@
 package com.zp.rx_java_t.content
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipDescription
-import android.content.ClipboardManager
-import android.content.Context
+import android.content.*
 import android.graphics.Color
 import android.graphics.Point
+import android.os.Bundle
+import android.os.Parcelable
 import android.support.v4.content.ContextCompat
+import android.support.v4.util.ArrayMap
 import android.util.SparseArray
 import android.view.View
 import android.view.WindowManager
 import com.zp.rx_java_t.BuildConfig
 import com.zp.rx_java_t.R
+import com.zp.rx_java_t.util.L
 import com.zp.rx_java_t.util.Toaster
+import java.io.Serializable
 
 /** 正式版---true；开发版---false */
 val IS_OFFICIAL = BuildConfig.IS_OFFICIAL
@@ -22,6 +24,29 @@ const val SP_FILE_NAME = "zp_tx_java_t"
 const val LOG_TAG = "APP_LOG"
 
 // Context 相关 ===========================================================
+
+fun Context.jumpActivity(clazz: Class<*>, map: ArrayMap<String, Any>? = null) {
+    startActivity(Intent(this, clazz).apply {
+        if (map != null && map.isNotEmpty()) {
+            putExtras(Bundle().apply {
+                map.forEach { k, v ->
+                    when (v) {
+                        is Int -> putInt(k, v)
+                        is Double -> putDouble(k, v)
+                        is Float -> putFloat(k, v)
+                        is Long -> putLong(k, v)
+                        is Boolean -> putBoolean(k, v)
+                        is Char -> putChar(k, v)
+                        is String -> putString(k, v)
+                        is Serializable -> putSerializable(k, v)
+                        is Parcelable -> putParcelable(k, v)
+                        else -> L.e("Unsupported format")
+                    }
+                }
+            })
+        }
+    })
+}
 
 /** 获取ApplicationContext */
 fun getAppContext() = Toaster.getApplicationContext()
@@ -82,6 +107,12 @@ fun px2dip(pxValue: Float) = px2dipF(pxValue).toInt()
 fun getColorById(colorID: Int) = ContextCompat.getColor(getAppContext(), colorID)
 fun getDimenById(dimenID: Int) = getAppContext().resources.getDimension(dimenID)
 fun getStringById(stringID: Int) = getAppContext().resources.getString(stringID)
+
+fun getTextValue(str: Any) = when (str) {
+    is Int -> getStringById(str)
+    is String -> str
+    else -> str.toString()
+}
 
 // 列表、集合 ===============================================
 
