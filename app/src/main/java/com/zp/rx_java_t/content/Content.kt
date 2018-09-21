@@ -20,7 +20,7 @@ import java.io.Serializable
 /** 正式版---true；开发版---false */
 val IS_OFFICIAL = BuildConfig.IS_OFFICIAL
 
-const val SP_FILE_NAME = "zp_tx_java_t"
+const val SP_FILE_NAME = "zp_rx_java_t"
 const val LOG_TAG = "APP_LOG"
 
 // Context 相关 ===========================================================
@@ -136,6 +136,4 @@ internal inline fun <E> SparseArray<E>.forEachIndices(block: (E, Int) -> Unit) {
 
 val SparseArray<*>.indices: IntRange
     get() = 0 until size()
-
-
 

@@ -11,20 +11,20 @@ import android.view.View
 import com.zp.rx_java_t.R
 
 /**
- * com.als.pet.widget.scroll
+ * com.zp.rx_java_t.view
  * Created by ZP on 2018/5/17.
  * description:
  * version: 1.0
  */
 class RecycleViewDivider : RecyclerView.ItemDecoration {
 
-    private var mPaint: Paint? = null
-    private var mLeftPadding = 0
-    private var mRightPadding = 0
+    private var paint: Paint? = null
+    private var leftPadding = 0
+    private var rightPadding = 0
     // 分割线高度
-    private var mDividerHeight = 1
+    private var dividerHeight = 1
     // 列表的方向
-    private var mOrientation: Int = HORIZONTAL
+    private var orientation: Int = HORIZONTAL
 
     companion object {
         const val VERTICAL = LinearLayoutManager.VERTICAL
@@ -39,10 +39,10 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
         if (orientation != VERTICAL && orientation != HORIZONTAL) {
             throw IllegalArgumentException("请输入正确的参数！")
         }
-        mOrientation = orientation
-        mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
-        mPaint?.color = ContextCompat.getColor(context, R.color.gray)
-        mPaint?.style = Paint.Style.FILL
+        this.orientation = orientation
+        paint = Paint(Paint.ANTI_ALIAS_FLAG)
+        paint?.color = ContextCompat.getColor(context, R.color.gray)
+        paint?.style = Paint.Style.FILL
     }
 
     /**
@@ -53,11 +53,11 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
      */
     constructor(context: Context, orientation: Int, dividerHeight: Int, dividerColor: Int) : this(context, orientation) {
         if (dividerHeight != 0) {
-            mDividerHeight = context.resources.getDimension(dividerHeight).toInt()
+            this.dividerHeight = context.resources.getDimension(dividerHeight).toInt()
         }
-        if (mDividerHeight == 0) mDividerHeight = 1
+        if (this.dividerHeight == 0) this.dividerHeight = 1
         if (dividerColor != 0) {
-            mPaint?.color = ContextCompat.getColor(context, dividerColor)
+            paint?.color = ContextCompat.getColor(context, dividerColor)
         }
     }
 
@@ -71,20 +71,20 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
      */
     constructor(context: Context, orientation: Int, dividerHeight: Int, dividerColor: Int, leftPadding: Int, rightPadding: Int)
             : this(context, orientation, dividerHeight, dividerColor) {
-        mLeftPadding = context.resources.getDimension(leftPadding).toInt()
-        mRightPadding = context.resources.getDimension(rightPadding).toInt()
+        this.leftPadding = context.resources.getDimension(leftPadding).toInt()
+        this.rightPadding = context.resources.getDimension(rightPadding).toInt()
     }
 
     // 获取分割线尺寸
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {
         super.getItemOffsets(outRect, view, parent, state)
-        outRect.set(0, 0, 0, mDividerHeight)
+        outRect.set(0, 0, 0, dividerHeight)
     }
 
     // 绘制分割线
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State?) {
         super.onDraw(c, parent, state)
-        if (mOrientation == LinearLayoutManager.VERTICAL) {
+        if (orientation == LinearLayoutManager.VERTICAL) {
             drawVertical(c, parent)
         } else {
             drawHorizontal(c, parent)
@@ -100,7 +100,7 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
             val child = parent.getChildAt(i)
             val layoutParams = child.layoutParams as RecyclerView.LayoutParams
             val top = child.bottom + layoutParams.bottomMargin
-            val bottom = top + mDividerHeight
+            val bottom = top + dividerHeight
             drawLine(left, top, right, bottom, canvas)
         }
     }
@@ -114,18 +114,18 @@ class RecycleViewDivider : RecyclerView.ItemDecoration {
             val child = parent.getChildAt(i)
             val layoutParams = child.layoutParams as RecyclerView.LayoutParams
             val left = child.right + layoutParams.rightMargin
-            val right = left + mDividerHeight
+            val right = left + dividerHeight
             drawLine(left, top, right, bottom, canvas)
         }
     }
 
     private fun drawLine(left: Int, top: Int, right: Int, bottom: Int, canvas: Canvas) {
-        if (mPaint != null) {
+        if (paint != null) {
             canvas.drawRect(
-                    left.toFloat() + mLeftPadding,
+                    left.toFloat() + leftPadding,
                     top.toFloat(),
-                    right.toFloat() - mRightPadding,
-                    bottom.toFloat(), mPaint
+                    right.toFloat() - rightPadding,
+                    bottom.toFloat(), paint
             )
         }
     }
