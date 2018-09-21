@@ -54,6 +54,18 @@ fun getAppContext() = Toaster.getApplicationContext()
 /** 返回ToolBar的高度 */
 fun getToolBarHeight() = getAppContext().resources.getDimension(R.dimen.toolBarHeight).toInt()
 
+/**
+ * 设置状态栏 显示状态
+ * @param enable true: 隐藏；false：显示
+ */
+fun Activity.setFullScreen(enable: Boolean) {
+    val lp = window.attributes
+    if (enable) lp.flags = lp.flags or WindowManager.LayoutParams.FLAG_FULLSCREEN
+    else lp.flags = lp.flags and WindowManager.LayoutParams.FLAG_FULLSCREEN.inv()
+    window.attributes = lp
+    window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+}
+
 /** 设置状态栏透明 */
 fun Activity.setStatusBarTransparent() {
     val decorView = window.decorView

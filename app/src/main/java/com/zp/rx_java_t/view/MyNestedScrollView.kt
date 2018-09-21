@@ -28,7 +28,6 @@ class MyNestedScrollView : NestedScrollView {
         private const val MSG_SCROLL = 1
     }
 
-    // 你曾那样笃定爱着我 才有现在的我们 不忍心说出口 我不爱你了 不敢一错再错 我不爱你了
     private var handler: ScrollHandler? = null
 
     /** 是否触摸 */
@@ -45,6 +44,7 @@ class MyNestedScrollView : NestedScrollView {
     /** 开始滚动 */
     var startScrollListener:(() -> Unit) ? = null
 
+    // 判断滚动顶部or底部
     private var isScrolledToTop = true
     private var isScrolledToBottom = false
     private var isUserBottom = false
@@ -156,7 +156,7 @@ class MyNestedScrollView : NestedScrollView {
                 L.e("滚动至顶部")
             }
         } else if (isScrolledToBottom) {
-            if ( !isUserBottom) {
+            if (!isUserBottom) {
                 isUserBottom = true
                 L.e("滚动至底部")
             }
