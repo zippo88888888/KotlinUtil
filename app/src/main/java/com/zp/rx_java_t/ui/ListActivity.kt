@@ -6,6 +6,7 @@ import com.zp.rx_java_t.R
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BaseAdapter
 import com.zp.rx_java_t.base.BaseViewHolder
+import com.zp.rx_java_t.content.toast
 import com.zp.rx_java_t.view.RecycleViewDivider
 import kotlinx.android.synthetic.main.activity_list.*
 
@@ -19,7 +20,20 @@ class ListActivity : BaseActivity() {
         setBarTitle("RecyclerView")
         listAdapter = object : BaseAdapter<String>(this, android.R.layout.simple_list_item_1) {
             override fun bindView(holder: BaseViewHolder, position: Int) {
-                holder.setTextValue(android.R.id.text1, getItem(position))
+                holder.apply {
+                    setTextValue(android.R.id.text1, getItem(position))
+                    // match_parent 属性导致 的
+                    setOnClickListener(android.R.id.text1) { toast("viewClick")}
+                    setOnItemClickListener(position) { _, i -> toast("itemClick --- $i") }
+                    setOnItemLongClickListener(position) { _, i ->
+                        toast("itemLongClick --- $i")
+                        true
+                    }
+                    /*setOnTouchListener(position) { _, _, i ->
+                        toast("itemTouch --- $i")
+                        false
+                    }*/
+                }
             }
         }
         list_list.apply {
