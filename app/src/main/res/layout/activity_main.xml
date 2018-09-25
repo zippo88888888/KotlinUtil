@@ -35,6 +35,13 @@
                 android:gravity="center"
                 android:text="dialog" />
 
+            <Button
+                android:id="@+id/main_sys_dialog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="sys_dialog" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"

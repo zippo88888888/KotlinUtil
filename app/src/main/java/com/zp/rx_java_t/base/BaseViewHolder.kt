@@ -49,8 +49,8 @@ class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         getView<View>(id).visibility = visibility
     }
 
-    fun setOnClickListener(id: Int, listener: (View) -> Unit) {
-        getView<View>(id).setOnClickListener { listener(it) }
+    fun setOnClickListener(id: Int, block: (View) -> Unit) {
+        getView<View>(id).setOnClickListener { block(it) }
     }
 
     fun setOnItemClickListener(position: Int, block: (View, Int) -> Unit) {
