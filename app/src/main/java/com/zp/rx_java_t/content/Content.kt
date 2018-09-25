@@ -120,10 +120,10 @@ fun getColorById(colorID: Int) = ContextCompat.getColor(getAppContext(), colorID
 fun getDimenById(dimenID: Int) = getAppContext().resources.getDimension(dimenID)
 fun getStringById(stringID: Int) = getAppContext().resources.getString(stringID)
 
-fun getTextValue(str: Any) = when (str) {
-    is Int -> getStringById(str)
-    is String -> str
-    else -> str.toString()
+fun getTextValue(any: Any) = when (any) {
+    is Int -> getStringById(any)
+    is String -> any
+    else -> any.toString()
 }
 
 // 列表、集合 ===============================================
@@ -148,4 +148,13 @@ internal inline fun <E> SparseArray<E>.forEachIndices(block: (E, Int) -> Unit) {
 
 val SparseArray<*>.indices: IntRange
     get() = 0 until size()
+
+internal inline fun <E> List<E>.forEachNoIterable(block: (E) -> Unit) {
+    var index = 0
+    val size = size
+    while (index < size) {
+        block(get(index))
+        index ++
+    }
+}
 

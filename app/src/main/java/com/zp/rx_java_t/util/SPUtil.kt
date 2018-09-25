@@ -60,15 +60,14 @@ object SPUtil {
     /**
      * 查询某个key是否已经存在
      */
-    fun contains(key: String): Boolean = getSP().contains(key)
+    fun contains(key: String) = getSP().contains(key)
 
     /**
      * 返回所有的键值对
      */
     fun getAll(): Map<String, *> =  getSP().all
 
-    private fun getSP(): SharedPreferences =
-            getAppContext().getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE)
+    private fun getSP() = getAppContext().getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE)
 
     /**
      * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类(内部类)
@@ -99,6 +98,7 @@ object SPUtil {
                     return
                 }
             } catch (e: Exception) {
+                if (!IS_OFFICIAL) e.printStackTrace()
             }
             editor.commit()
         }

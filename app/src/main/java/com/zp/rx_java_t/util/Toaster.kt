@@ -57,6 +57,7 @@ class Toaster(con: Context) : Toast(con) {
             if (location != T && location != B && location != C) {
                 throw IllegalArgumentException("Toaster location only is CENTER TOP or BOTTOM")
             }
+            // TODO 此处需要减去 状态栏的高度
             if (location == T) toast?.setGravity(location, 0, getToolBarHeight() - applicationCon.getStatusBarHeight())
             else toast?.setGravity(location, 0, 0)
             toast?.view = LayoutInflater.from(applicationCon).inflate(R.layout.layout_toast, null).apply {

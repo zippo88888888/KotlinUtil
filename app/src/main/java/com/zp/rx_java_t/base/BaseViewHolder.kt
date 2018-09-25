@@ -53,15 +53,15 @@ class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         getView<View>(id).setOnClickListener { listener(it) }
     }
 
-    fun setOnItemClickListener(position: Int, listener: (View, Int) -> Unit) {
-        itemView.setOnClickListener { listener(it, position) }
+    fun setOnItemClickListener(position: Int, block: (View, Int) -> Unit) {
+        itemView.setOnClickListener { block(it, position) }
     }
 
-    fun setOnItemLongClickListener(position: Int, listener: (View, Int) -> Boolean) {
-        itemView.setOnLongClickListener { listener(it, position) }
+    fun setOnItemLongClickListener(position: Int, block: (View, Int) -> Boolean) {
+        itemView.setOnLongClickListener { block(it, position) }
     }
 
-    fun setOnTouchListener(position: Int, listener: (View, MotionEvent, Int) -> Boolean) {
-        itemView.setOnTouchListener { v, event -> listener(v, event, position) }
+    fun setOnTouchListener(position: Int, block: (View, MotionEvent, Int) -> Boolean) {
+        itemView.setOnTouchListener { v, event -> block(v, event, position) }
     }
 }
