@@ -148,6 +148,16 @@ class SuperSysDialog(context: Context) {
                 if (neutralBlock != null && neutralText.isNotEmpty()) {
                     setNeutralButton(neutralText) { d, i -> neutralBlock?.invoke(d, i) }
                 }
+                setOnDismissListener {
+                    items = null
+                    multcheckedItems = null
+                    singleBlock = null
+                    multiBlock = null
+                    positiveBlock = null
+                    negativeBlock = null
+                    neutralBlock = null
+                    reference.clear()
+                }
                 show()
             }
         } else L.e("Context is null")
