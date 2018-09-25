@@ -46,7 +46,7 @@ class SuperSysDialog(context: Context) {
     private val reference: SoftReference<Context> by lazy { SoftReference(context) }
 
     companion object {
-        fun builder(context: Context) = SuperSysDialog(context)
+        fun create(context: Context) = SuperSysDialog(context)
     }
 
     fun setTitle(title: String): SuperSysDialog {
@@ -124,7 +124,7 @@ class SuperSysDialog(context: Context) {
         return this
     }
 
-    fun show() {
+    fun builder() {
         if (reference.get() != null) {
             AlertDialog.Builder(reference.get()!!).apply {
                 setTitle(if (title.isEmpty()) "温馨提示" else title)

@@ -49,7 +49,7 @@ class MainActivity : BaseActivity() {
         }
 
         main_sys_dialog.setOnClickListener {
-            SuperSysDialog.builder(this)
+            SuperSysDialog.create(this)
                     .setTitle("我是标题")
                     /*.setMessage("I am Message")*/
                     /*.setSingleItems(items) { _, i ->
@@ -64,7 +64,7 @@ class MainActivity : BaseActivity() {
                     .setPositiveButton("确定") { d, _ -> d.dismiss() }
                     .setNegativeButton("取消") { d, _ -> d.dismiss() }
                     .setNeutralButton("不再显示") { d, _ -> d.dismiss() }
-                    .show()
+                    .builder()
         }
     }
 
