@@ -1,6 +1,7 @@
 package com.zp.rx_java_t
 
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.widget.ImageView
 import android.widget.TextView
 import com.zp.rx_java_t.base.BaseActivity

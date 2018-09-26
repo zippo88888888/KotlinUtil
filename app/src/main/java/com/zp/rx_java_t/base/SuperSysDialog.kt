@@ -13,7 +13,7 @@ import java.lang.ref.SoftReference
  * description:
  * version: 1.0
  */
-class SuperSysDialog(context: Context) {
+class SuperSysDialog private constructor(context: Context) {
 
     private var title = ""
     private var message: Any = ""
@@ -65,7 +65,7 @@ class SuperSysDialog(context: Context) {
     }
 
     // 设置列表
-    fun setItems(items: Array<String>, singleBlock: ((DialogInterface, Int) -> Unit)?): SuperSysDialog {
+    fun setItems(items: Array<String>, singleBlock: (DialogInterface, Int) -> Unit): SuperSysDialog {
         this.singleBlock = singleBlock
         this.items = items
         isItems = true
@@ -75,7 +75,7 @@ class SuperSysDialog(context: Context) {
     }
 
     // 设置单选列表
-    fun setSingleItems(items: Array<String>, singleBlock: ((DialogInterface, Int) -> Unit)?): SuperSysDialog {
+    fun setSingleItems(items: Array<String>, singleBlock: (DialogInterface, Int) -> Unit): SuperSysDialog {
         this.items = items
         this.singleBlock = singleBlock
         isItems = false
@@ -85,7 +85,7 @@ class SuperSysDialog(context: Context) {
     }
 
     // 设置多选列表
-    fun setMultiChoiceItems(items: Array<String>, multiBlock: ((DialogInterface, Int, Boolean) -> Unit)?): SuperSysDialog {
+    fun setMultiChoiceItems(items: Array<String>, multiBlock: (DialogInterface, Int, Boolean) -> Unit): SuperSysDialog {
         this.items = items
         this.multiBlock = multiBlock
         isItems = false
@@ -106,19 +106,19 @@ class SuperSysDialog(context: Context) {
         return this
     }
 
-    fun setPositiveButton(positiveText: String, positiveBlock: ((DialogInterface, Int) -> Unit)?): SuperSysDialog {
+    fun setPositiveButton(positiveText: String, positiveBlock: (DialogInterface, Int) -> Unit): SuperSysDialog {
         this.positiveText = positiveText
         this.positiveBlock = positiveBlock
         return this
     }
 
-    fun setNegativeButton(negativeText: String, negativeBlock: ((DialogInterface, Int) -> Unit)?): SuperSysDialog {
+    fun setNegativeButton(negativeText: String, negativeBlock: (DialogInterface, Int) -> Unit): SuperSysDialog {
         this.negativeText = negativeText
         this.negativeBlock = negativeBlock
         return this
     }
 
-    fun setNeutralButton(neutralText: String, neutralBlock: ((DialogInterface, Int) -> Unit)?): SuperSysDialog {
+    fun setNeutralButton(neutralText: String, neutralBlock: (DialogInterface, Int) -> Unit): SuperSysDialog {
         this.neutralText = neutralText
         this.neutralBlock = neutralBlock
         return this
