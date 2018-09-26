@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/layout_tool_bar" />
@@ -42,10 +43,19 @@
                 android:gravity="center"
                 android:text="sys_dialog" />
 
+            <com.zp.rx_java_t.view.AnimButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/gray"
+                app:animButtonTxt="登录"
+                app:animButtonTxtSize="15sp"
+                app:animButtonDuration="1000"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                android:background="@color/violet"/>
+                android:background="@color/baseColor"/>
 
         </LinearLayout>
 

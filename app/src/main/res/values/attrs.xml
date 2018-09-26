@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="AnimButton">
+
+        <!-- R角度数 -->
+        <attr name="animButtonR" format="integer" />
+        <attr name="animButtonBgColor" format="color" />
+        <attr name="animButtonDuration" format="integer" />
+
+        <attr name="animButtonTxt" format="string" />
+        <attr name="animButtonTxtSize" format="dimension" />
+        <attr name="animButtonTxtColor" format="color" />
+
+        <attr name="animButtonArcWidth" format="dimension" />
+        <attr name="animButtonArcColor" format="color" />
+
+    </declare-styleable>
+
+</resources>
