@@ -40,8 +40,10 @@ class AnimButton : View {
         /** 默认的 文字颜色 */
         private const val DEFAULT_ANIM_BUTTON_TXT_COLOR = R.color.white
 
+        /** 默认的 圆弧边距 */
+        private const val DEFAULT_ANIM_BUTTON_ARC_PADDING = 10f
         /** 默认的 圆弧宽度 */
-        private const val DEFAULT_ANIM_BUTTON_ARC_WIDTH = 5f
+        private const val DEFAULT_ANIM_BUTTON_ARC_WIDTH = 3f
         /** 默认的 圆弧颜色 */
         private const val DEFAULT_ANIM_BUTTON_ARC_COLOR = R.color.white
 
@@ -65,6 +67,8 @@ class AnimButton : View {
     var animButtonTxtSize = DEFAULT_ANIM_BUTTON_TXT_SIZE
     /** 文字颜色 */
     var animButtonTxtColor = DEFAULT_ANIM_BUTTON_TXT_COLOR
+    /** 圆弧边距 */
+    var animButtonArcPadding = DEFAULT_ANIM_BUTTON_ARC_PADDING
     /** 圆弧宽度 */
     var animButtonArcWidth = DEFAULT_ANIM_BUTTON_ARC_WIDTH
     /** 圆弧颜色 */
@@ -91,6 +95,8 @@ class AnimButton : View {
 
     /** 控件是否是展开状态 */
     private var isShow = true
+    /** 圆弧是否显示 */
+    private var isShowArc = false
 
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
@@ -101,6 +107,7 @@ class AnimButton : View {
         animButtonDuration = array.getInt(R.styleable.AnimButton_animButtonDuration, DEFAULT_ANIM_BUTTON_DURATION)
         animButtonTxtSize = array.getDimension(R.styleable.AnimButton_animButtonTxtSize, DEFAULT_ANIM_BUTTON_TXT_SIZE)
         animButtonTxtColor = array.getColor(R.styleable.AnimButton_animButtonTxtColor, getColorById(DEFAULT_ANIM_BUTTON_TXT_COLOR))
+        animButtonArcPadding = array.getDimension(R.styleable.AnimButton_animButtonArcPadding, DEFAULT_ANIM_BUTTON_ARC_PADDING)
         animButtonArcWidth = array.getDimension(R.styleable.AnimButton_animButtonArcWidth, DEFAULT_ANIM_BUTTON_ARC_WIDTH)
         animButtonArcColor = array.getColor(R.styleable.AnimButton_animButtonArcColor, getColorById(DEFAULT_ANIM_BUTTON_ARC_COLOR))
         animButtonTxt = try {
@@ -123,6 +130,7 @@ class AnimButton : View {
         txtPaint?.textAlign = Paint.Align.CENTER
 
         arcPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        arcPaint?.style = Paint.Style.STROKE
         arcPaint?.color = animButtonArcColor
         arcPaint?.strokeWidth = animButtonArcWidth
     }
@@ -155,6 +163,10 @@ class AnimButton : View {
     override fun onDraw(canvas: Canvas?) {
         drawOval(canvas)
         drawRect(canvas)
+        if (isShowArc) {
+            // 绘制圆弧，并执行旋转动画
+            drawArc(canvas)
+        }
     }
 
     // 绘制左右两侧圆
@@ -190,7 +202,7 @@ class AnimButton : View {
         )
         canvas?.drawRect(rect, paint)
 
-        if (animButtonTxt.isNotEmpty()) {
+        if (animButtonTxt.isNotEmpty() && isShow) {
             // 文字所在的矩形Rect
             val txtRect = Rect(0, 0, width, height)
             val fontMetrics = txtPaint!!.fontMetricsInt
@@ -200,6 +212,18 @@ class AnimButton : View {
         }
     }
 
+    // 绘制圆弧
+    private fun drawArc(canvas: Canvas?) {
+        val arcRect = RectF(
+                leftOvalRect.left + animButtonArcPadding,
+                leftOvalRect.top + animButtonArcPadding,
+                leftOvalRect.right - animButtonArcPadding,
+                leftOvalRect.bottom - animButtonArcPadding
+        )
+        canvas?.drawArc(arcRect, -180f, 180f, false, arcPaint)
+    }
+
+    // TODO 右侧动画有问题，先注释，在依次修改
     private fun startAnim() {
         if (oneAnim == null && animState == ANIM_END) {
             val leftEndValue = centerX - rH / 2f
@@ -218,8 +242,8 @@ class AnimButton : View {
                         leftEndValue, 0f)
                 rightValuesHolder = PropertyValuesHolder.ofFloat("rightChange",
                         rightEndValue, width - rH - paddingRight.toFloat())
+                isShowArc = false
             }
-            isShow = !isShow
             oneAnim = ObjectAnimator.ofPropertyValuesHolder(this, leftValuesHolder, rightValuesHolder)
             oneAnim?.duration = animButtonDuration.toLong()
             oneAnim?.interpolator = LinearInterpolator()
@@ -230,6 +254,10 @@ class AnimButton : View {
                 }
 
                 override fun onAnimationEnd(animation: Animator?) {
+                    if (isShow) {
+                        isShowArc = true
+                    }
+                    isShow = !isShow
                     animState = ANIM_END
                     oneAnim?.cancel()
                     oneAnim = null

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <include layout="@layout/layout_tool_bar" />
@@ -20,7 +20,7 @@
                 android:id="@+id/main_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="list"/>
+                android:text="list" />
 
             <Button
                 android:id="@+id/main_show"
@@ -47,15 +47,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:background="@color/gray"
+                app:animButtonDuration="300"
                 app:animButtonTxt="登录"
-                app:animButtonTxtSize="15sp"
-                app:animButtonDuration="1000"/>
+                app:animButtonTxtSize="15sp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                android:background="@color/baseColor"/>
+                android:background="@color/baseColor" />
 
         </LinearLayout>
 

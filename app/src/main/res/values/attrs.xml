@@ -12,6 +12,7 @@
         <attr name="animButtonTxtSize" format="dimension" />
         <attr name="animButtonTxtColor" format="color" />
 
+        <attr name="animButtonArcPadding" format="dimension" />
         <attr name="animButtonArcWidth" format="dimension" />
         <attr name="animButtonArcColor" format="color" />
 
