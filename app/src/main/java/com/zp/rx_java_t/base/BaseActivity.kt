@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
+import com.zp.rx_java_t.util.AppManager
 import kotlinx.android.synthetic.main.layout_tool_bar.*
 
 /**
@@ -17,6 +18,7 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getContentView())
+        AppManager.getInstance().addActivity(this)
         if (getBarState()) {
             setBar()
         }
@@ -51,5 +53,10 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
 
     protected open fun back() {
         onBackPressed()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppManager.getInstance().removeActivity(this)
     }
 }

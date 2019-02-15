@@ -8,14 +8,18 @@ import android.os.Bundle
 import android.os.Parcelable
 import android.support.v4.content.ContextCompat
 import android.support.v4.util.ArrayMap
+import android.support.v7.app.AppCompatActivity
 import android.util.SparseArray
 import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import com.zp.rx_java_t.BuildConfig
 import com.zp.rx_java_t.R
+import com.zp.rx_java_t.util.AppManager
 import com.zp.rx_java_t.util.L
 import com.zp.rx_java_t.util.Toaster
 import java.io.Serializable
+import java.lang.Exception
 
 /** 正式版---true；开发版---false */
 val IS_OFFICIAL = BuildConfig.IS_OFFICIAL
@@ -49,7 +53,7 @@ fun Context.jumpActivity(clazz: Class<*>, map: ArrayMap<String, Any>? = null) {
 }
 
 /** 获取ApplicationContext */
-fun getAppContext() = Toaster.getApplicationContext()
+fun getAppContext() = AppManager.getInstance().getApplicationContext()
 
 /** 返回ToolBar的高度 */
 fun getToolBarHeight() = getAppContext().resources.getDimension(R.dimen.toolBarHeight).toInt()
@@ -99,6 +103,27 @@ fun Context.getAppCode() = packageManager.getPackageInfo(packageName, 0).version
 fun Context.copy(content: String) {
     val cmb = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     cmb.primaryClip = ClipData.newPlainText(ClipDescription.MIMETYPE_TEXT_PLAIN, content)
+}
+
+/** 关闭软键盘 */
+fun Activity.closeKeyboard() {
+    try {
+        val m = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        if (m.isActive) { // 表示打开
+            // 如果打开，则关闭
+            m.hideSoftInputFromWindow(currentFocus!!.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
+    } catch (e: Exception) {
+        if (!IS_OFFICIAL) e.printStackTrace()
+    }
+}
+
+/** 根据Tag检查是否存在Fragment实例，如果存在就移除！ */
+fun AppCompatActivity.checkFragmentByTag(fragmentTag: String) {
+    val fragment = supportFragmentManager.findFragmentByTag(fragmentTag)
+    if (fragment != null) {
+        supportFragmentManager.beginTransaction().remove(fragment).commit()
+    }
 }
 
 // 资源相关 ================================================

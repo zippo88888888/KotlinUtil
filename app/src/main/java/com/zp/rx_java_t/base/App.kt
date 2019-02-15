@@ -1,6 +1,7 @@
 package com.zp.rx_java_t.base
 
 import android.app.Application
+import com.zp.rx_java_t.util.AppManager
 import com.zp.rx_java_t.util.Toaster
 
 /**
@@ -13,7 +14,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        Toaster.init(this)
+        AppManager.getInstance().init(this)
     }
 
 }
