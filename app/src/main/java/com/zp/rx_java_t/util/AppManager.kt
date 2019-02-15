@@ -12,13 +12,12 @@ import java.util.*
  * 包名    com.zp.rx_java_t.util
  * 描述
  */
-@SuppressLint("StaticFieldLeak")
 class AppManager {
 
     private var applicationCon: Context? = null
 
     private object Builder {
-        val MANAGER = AppManager()
+        @SuppressLint("StaticFieldLeak") val MANAGER = AppManager()
     }
 
     private val activities = LinkedList<Activity>()
