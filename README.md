@@ -10,3 +10,6 @@ https://github.com/reline/Google-Maps-BottomSheet <br>
 https://github.com/trafi/anchor-bottom-sheet-behavior <br>
 https://github.com/laenger/BottomSheetCoordinatorLayout <br>
 https://github.com/Krupen/FabulousFilter <br>
+
+解决 新版 AS xml格式问题
+File>Settings>Editor>Code Style>XML>Set from...（右上角）>Predefined Style>Android然后Apply，再Ctrl+Alt+L再试试
