@@ -6,7 +6,7 @@ import com.zp.rx_java_t.R
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BaseAdapter
 import com.zp.rx_java_t.base.BaseViewHolder
-import com.zp.rx_java_t.content.toast
+import com.zp.rx_java_t.content.showToast
 import com.zp.rx_java_t.view.RecycleViewDivider
 import kotlinx.android.synthetic.main.activity_list.*
 
@@ -23,10 +23,10 @@ class ListActivity : BaseActivity() {
                 holder.apply {
                     setTextValue(android.R.id.text1, getItem(position))
                     // match_parent 属性导致 的
-                    setOnClickListener(android.R.id.text1) { toast("viewClick")}
-                    setOnItemClickListener(position) { _, i -> toast("itemClick --- $i") }
+                    setOnClickListener(android.R.id.text1) { showToast("viewClick") }
+                    setOnItemClickListener(position) { _, i -> showToast("itemClick --- $i") }
                     setOnItemLongClickListener(position) { _, i ->
-                        toast("itemLongClick --- $i")
+                        showToast("itemLongClick --- $i")
                         true
                     }
                     /*setOnTouchListener(position) { _, _, i ->

@@ -18,7 +18,6 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getContentView())
-        AppManager.getInstance().addActivity(this)
         if (getBarState()) {
             setBar()
         }
@@ -55,8 +54,4 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
         onBackPressed()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        AppManager.getInstance().removeActivity(this)
-    }
 }

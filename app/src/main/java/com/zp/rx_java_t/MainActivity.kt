@@ -8,10 +8,7 @@ import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BuilderDialog
 import com.zp.rx_java_t.base.SuperSysDialog
 import com.zp.rx_java_t.base.SystemDialog
-import com.zp.rx_java_t.content.getColorById
-import com.zp.rx_java_t.content.jumpActivity
-import com.zp.rx_java_t.content.toast
-import com.zp.rx_java_t.content.toast2
+import com.zp.rx_java_t.content.*
 import com.zp.rx_java_t.ui.ListActivity
 import com.zp.rx_java_t.util.L
 import com.zp.rx_java_t.util.Toaster
@@ -33,7 +30,7 @@ class MainActivity : BaseActivity() {
         window.statusBarColor = getColorById(R.color.baseColor)
         main_list.setOnClickListener { jumpActivity(ListActivity::class.java) }
         main_show.setOnClickListener {
-            toast2(main_show.text, Toaster.T)
+            showToast(main_show.text, Toaster.T)
         }
         main_dialog.setOnClickListener {
             BuilderDialog.create()
@@ -44,7 +41,7 @@ class MainActivity : BaseActivity() {
                         v.findViewById<TextView>(R.id.dialog_permission_down).setOnClickListener { showDialog() }
                     }
                     .setDismissLogic {
-                        toast2("dialog 销毁", Toaster.C, Toaster.LONG, R.color.black)
+                        showToast("销毁")
                     }
                     .show()
         }
@@ -67,13 +64,22 @@ class MainActivity : BaseActivity() {
                     .setNeutralButton("不再显示") { d, _ -> d.dismiss() }
                     .builder()
         }
+
+        main_diyView.bindView(diy_one_view_txt)
+        main_animBtn.setOnClickListener {
+            main_diyView.startAnim()
+        }
     }
 
     private fun showDialog() {
         SystemDialog(this).apply {
-            showDialog1({ toast("确定") }, "申请权限", "确定")
+            showDialog1({ showToast("确定") }, "申请权限", "确定")
         }
     }
 
+    override fun onDestroy() {
+        main_diyView.clear()
+        super.onDestroy()
+    }
 }
 

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.content.Context
+import java.lang.ref.WeakReference
 import java.util.*
 
 /**
@@ -20,7 +21,7 @@ class AppManager {
         @SuppressLint("StaticFieldLeak") val MANAGER = AppManager()
     }
 
-    private val activities = LinkedList<Activity>()
+    private val activities by lazy { ArrayList<WeakReference<Activity>?>() }
 
     companion object {
         fun getInstance() = Builder.MANAGER
@@ -36,26 +37,25 @@ class AppManager {
     }
 
     @Synchronized
-    fun addActivity(activity: Activity) {
+    fun addActivity(activity: WeakReference<Activity>?) {
         activities.add(activity)
     }
 
     @Synchronized
-    fun removeActivity(activity: Activity) {
-        if (activities.contains(activity)) {
-            activities.remove(activity)
-        }
+    fun removeActivity(activity: WeakReference<Activity>?) {
+        activities.remove(activity)
     }
 
     @Synchronized
     fun clear() {
-        var i = activities.size - 1
-        while (i > -1) {
-            val activity = activities[i]
-            removeActivity(activity)
-            activity.finish()
-            i = activities.size
-            i--
+        if (activities.isNullOrEmpty()) return
+        for (activityWeakReference in activities) {
+            val activity = activityWeakReference?.get()
+            if (activity != null && !activity.isFinishing) {
+                activity.finish()
+            }
         }
+        activities.clear()
     }
+
 }

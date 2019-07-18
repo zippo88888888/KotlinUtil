@@ -18,4 +18,20 @@
 
     </declare-styleable>
 
+    <declare-styleable name="DiyViewOne1">
+        <attr name="oWidth" format="dimension" />
+        <attr name="oBgColor" format="color" />
+        <attr name="oColor" format="color" />
+        <!-- 是否渐变 -->
+        <attr name="oGradient" format="boolean" />
+        <attr name="oGradientType">
+            <enum name="oGradientLeftToRight" value="0x100" />
+            <enum name="oGradientTopToBottom" value="0x200" />
+        </attr>
+        <attr name="oColor2" format="color" />
+        <attr name="oMaxValue" format="integer" />
+        <attr name="oValue" format="integer" />
+        <attr name="oDuration" format="integer" />
+    </declare-styleable>
+
 </resources>

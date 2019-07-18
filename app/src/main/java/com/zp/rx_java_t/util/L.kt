@@ -5,53 +5,70 @@ import com.zp.rx_java_t.content.*
 
 object L {
 
-    fun d(TAG: String, message: Any) {
-        if (!IS_OFFICIAL) {
-            Log.d(TAG, getMessage(message))
-        }
+    private const val TAG = "APP_LOG"
+    private const val I = 1
+    private const val D = 2
+    private const val E = 3
+    private const val V = 4
+
+    fun i(tag: String, message: Any) {
+        log(I, tag, message)
     }
 
-    fun e(TAG: String, message: Any) {
-        if (!IS_OFFICIAL) {
-            Log.e(TAG, getMessage(message))
-        }
+    fun d(tag: String, message: Any) {
+        log(D, tag, message)
     }
 
-    fun i(TAG: String, message: Any) {
-        if (!IS_OFFICIAL)
-            Log.i(TAG, getMessage(message))
+    fun e(tag: String, message: Any) {
+        log(E, tag, message)
     }
 
-
-    fun v(TAG: String, message: Any) {
-        if (!IS_OFFICIAL)
-            Log.i(TAG, getMessage(message))
+    fun v(tag: String, message: Any) {
+        log(V, tag, message)
     }
 
-    // 下面四个是默认tag的函数
     fun i(msg: Any) {
-        if (!IS_OFFICIAL)
-            Log.i(LOG_TAG, getMessage(msg))
+        log(
+                I,
+                TAG,
+                msg
+        )
     }
 
     fun d(msg: Any) {
-        if (!IS_OFFICIAL)
-            Log.d(LOG_TAG, getMessage(msg))
+        log(
+                D,
+                TAG,
+                msg
+        )
     }
 
     fun e(msg: Any) {
-        if (!IS_OFFICIAL)
-            Log.e(LOG_TAG, getMessage(msg))
+        log(
+                E,
+                TAG,
+                msg
+        )
     }
 
     fun v(msg: Any) {
-        if (!IS_OFFICIAL)
-            Log.v(LOG_TAG, getMessage(msg))
+        log(
+                V,
+                TAG,
+                msg
+        )
     }
 
-    private fun getMessage(msg: Any) = when (msg) {
-        is String -> msg
-        else -> msg.toString()
+    private fun log(type: Int, TAG: String, msg: Any) {
+        if (!IS_OFFICIAL) {
+            val value = getTextValue(msg)
+            when (type) {
+                D -> Log.d(TAG, value)
+                E -> Log.e(TAG, value)
+                I -> Log.i(TAG, value)
+                V -> Log.v(TAG, value)
+            }
+        }
     }
 
 }

@@ -2,7 +2,7 @@
 
 buildscript {
 
-    ext.kotlin_version = '1.2.50'
+    ext.kotlin_version = '1.3.20' //1.2.50
     ext.builder_version = '27.0.3'
     ext.compile_sdk_version = 27
     ext.vCode = 1

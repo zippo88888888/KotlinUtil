@@ -51,10 +51,49 @@
                 app:animButtonTxt="登录"
                 app:animButtonTxtSize="15sp" />
 
+            <Button
+                android:id="@+id/main_animBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="start_anim"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="30dp">
+
+                <com.zp.rx_java_t.view.DiyViewOne1
+                    android:id="@+id/main_diyView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:oBgColor="@color/eeeeee"
+                    app:oColor="@color/green"
+                    app:oGradient="true"
+                    app:oGradientType="oGradientLeftToRight"
+                    app:oColor2="@color/blue"
+                    app:oDuration="5000"
+                    app:oMaxValue="100"
+                    app:oValue="100"
+                    app:oWidth="5dp"/>
+
+                <TextView
+                    android:id="@+id/diy_one_view_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="下载进度"/>
+
+            </FrameLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1000dp"
-                android:background="@color/baseColor" />
+                android:background="@color/violet" />
 
         </LinearLayout>
 

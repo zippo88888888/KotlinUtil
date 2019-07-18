@@ -41,17 +41,23 @@ class Toaster(con: Context) : Toast(con) {
          * 自定义 消息提醒
          * @param str           消息内容
          * @param location      位置
-         * @param duration      显示时间
          * @param bgColor       背景颜色
+         * @param textColor     文字颜色
+         * @param duration      显示时间
          */
-        fun makeText(str: Any, location: Int = T, duration: Int = SHORT, bgColor: Int = R.color.red) {
+        fun makeText(
+                str: Any,
+                location: Int = T,
+                bgColor: Int = R.color.red,
+                textColor: Int = R.color.white,
+                duration: Int = SHORT
+        ) {
             checkToast()
             toast = Toast(getAppContext())
             toast?.duration = duration
             if (location != T && location != B && location != C) {
                 throw IllegalArgumentException("Toaster location only is CENTER TOP or BOTTOM")
             }
-            // TODO 此处需要减去 状态栏的高度
             if (location == T) toast?.setGravity(location, 0, getToolBarHeight() - getAppContext().getStatusBarHeight())
             else toast?.setGravity(location, 0, 0)
             toast?.view = LayoutInflater.from(getAppContext()).inflate(R.layout.layout_toast, null).apply {
@@ -60,8 +66,10 @@ class Toaster(con: Context) : Toast(con) {
                 animate().translationY(0f).duration = 300
                 findViewById<TextView>(R.id.toast_msg).apply {
                     text = getTextValue(str)
+                    setTextColor(getColorById(textColor))
                     setBackgroundColor(getColorById(bgColor))
-                    layoutParams = LinearLayout.LayoutParams(getAppContext().getDisplay()[0], ViewGroup.LayoutParams.WRAP_CONTENT)
+                    layoutParams =
+                            LinearLayout.LayoutParams(getAppContext().getDisplay()[0], ViewGroup.LayoutParams.WRAP_CONTENT)
                 }
             }
             toast?.show()
