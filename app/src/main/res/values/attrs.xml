@@ -34,4 +34,35 @@
         <attr name="oDuration" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="DiyInputView">
+        <!-- 框未输入颜色 -->
+        <attr name="iFrameColor" format="color" />
+        <!-- 框输入后颜色 -->
+        <attr name="iFrameColor2" format="color" />
+        <!-- 框宽度 -->
+        <attr name="iFrameWidth" format="dimension" />
+        <!-- 框圆角大小 -->
+        <attr name="iFrameRadius" format="dimension" />
+        <!-- 框数量 -->
+        <attr name="iFrameLength" format="integer" />
+        <!-- 框间距 -->
+        <attr name="iFramePadding" format="dimension" />
+        <!-- 文字未输入颜色 -->
+        <attr name="iFrameTxtColor" format="color" />
+        <!-- 文字输入后颜色 -->
+        <attr name="iFrameTxtColor2" format="color" />
+        <!-- 文字大小 -->
+        <attr name="iFrameTxtSize" format="dimension" />
+        <!-- 文字输入后是否隐藏 -->
+        <attr name="iFrameTxtHidden" format="boolean" />
+        <!-- 文字输入后隐藏的宽度 该属性与iFrameTxtHiddenType 共用 -->
+        <attr name="iFrameTxtHiddenWidth" format="dimension" />
+        <!-- 文字输入后隐藏的样式 -->
+        <attr name="iFrameTxtHiddenType">
+            <enum name="circle" value="0x100" /><!-- 圆形 -->
+            <enum name="rectangle" value="0x200" /><!-- 矩形 -->
+            <enum name="triangle" value="0x300" /><!-- 三角形 -->
+        </attr>
+    </declare-styleable>
+
 </resources>

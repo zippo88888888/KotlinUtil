@@ -43,6 +43,13 @@
                 android:gravity="center"
                 android:text="sys_dialog" />
 
+            <Button
+                android:id="@+id/main_sys_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="pwd" />
+
             <com.zp.rx_java_t.view.AnimButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +70,7 @@
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp">
 
-                <com.zp.rx_java_t.view.DiyViewOne1
+                <com.zp.rx_java_t.view.diy.DiyViewOne1
                     android:id="@+id/main_diyView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

@@ -1,4 +1,4 @@
-package com.zp.rx_java_t.view
+package com.zp.rx_java_t.view.diy
 
 import android.animation.ObjectAnimator
 import android.content.Context

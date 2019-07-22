@@ -10,6 +10,7 @@ import com.zp.rx_java_t.base.SuperSysDialog
 import com.zp.rx_java_t.base.SystemDialog
 import com.zp.rx_java_t.content.*
 import com.zp.rx_java_t.ui.ListActivity
+import com.zp.rx_java_t.ui.PwdActivity
 import com.zp.rx_java_t.util.L
 import com.zp.rx_java_t.util.Toaster
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,6 +65,8 @@ class MainActivity : BaseActivity() {
                     .setNeutralButton("不再显示") { d, _ -> d.dismiss() }
                     .builder()
         }
+
+        main_sys_pwd.setOnClickListener { jumpActivity(PwdActivity::class.java) }
 
         main_diyView.bindView(diy_one_view_txt)
         main_animBtn.setOnClickListener {

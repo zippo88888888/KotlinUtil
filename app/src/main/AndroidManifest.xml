@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/pet_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.PwdActivity"></activity>
+
         <meta-data
             android:name="android.max_aspect"
             android:value="2.1" />
@@ -21,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ListActivity"></activity>
+        <activity android:name=".ui.ListActivity" />
     </application>
 
 </manifest>
