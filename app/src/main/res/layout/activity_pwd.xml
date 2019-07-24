@@ -14,9 +14,11 @@
 
         <com.zp.rx_java_t.view.diy.DiyInputView
             android:id="@+id/pwd_diyInputView"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/red"/>
+            android:layout_height="wrap_content" />
 
         <android.inputmethodservice.KeyboardView
             android:id="@+id/pwd_keyBoardView"

@@ -47,10 +47,8 @@
         <attr name="iFrameLength" format="integer" />
         <!-- 框间距 -->
         <attr name="iFramePadding" format="dimension" />
-        <!-- 文字未输入颜色 -->
+        <!-- 文字输入颜色 -->
         <attr name="iFrameTxtColor" format="color" />
-        <!-- 文字输入后颜色 -->
-        <attr name="iFrameTxtColor2" format="color" />
         <!-- 文字大小 -->
         <attr name="iFrameTxtSize" format="dimension" />
         <!-- 文字输入后是否隐藏 -->
