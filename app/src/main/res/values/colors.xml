@@ -13,4 +13,5 @@
     <color name="white">#ffffff</color>
     <color name="transparent">@android:color/transparent</color>
     <color name="eeeeee">#eeeeee</color>
+    <color name="keyBoardBgColor">#c6c8c8</color>
 </resources>

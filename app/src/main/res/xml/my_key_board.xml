@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Keyboard xmlns:android="http://schemas.android.com/apk/res/android">
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    android:keyWidth="100%p" android:horizontalGap="1px"
+    android:verticalGap="1px" android:keyHeight="@dimen/keyBoardHeight">
 
     <Row>
         <Key
@@ -26,9 +28,10 @@
     </Row>
 
     <Row>
-        <Key android:codes="11000" android:keyLabel="OK" />
+        <!--<Key android:codes="10010" android:keyIcon="@drawable/ic_keyboard_del" android:isRepeatable="true"/>-->
+        <Key android:codes="10010" android:keyLabel="Del" android:isRepeatable="true"/>
         <Key android:codes="10000" android:keyLabel="0" />
-        <Key android:codes="10010" android:keyIcon="@drawable/ic_keyboard_del" android:isRepeatable="true"/>
+        <Key android:codes="11000" android:keyLabel="Ok" />
     </Row>
 
 </Keyboard>

@@ -8,12 +8,28 @@
 
     <include layout="@layout/layout_tool_bar" />
 
-
-    <com.zp.rx_java_t.view.diy.DiyInputView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@color/red"/>
+        android:layout_height="match_parent">
+
+        <com.zp.rx_java_t.view.diy.DiyInputView
+            android:id="@+id/pwd_diyInputView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/red"/>
+
+        <android.inputmethodservice.KeyboardView
+            android:id="@+id/pwd_keyBoardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black"
+            android:keyBackground="@drawable/key_board_selector"
+            android:keyTextColor="@color/black"
+            android:shadowColor="@color/transparent"
+            android:visibility="visible"
+            android:shadowRadius="0" />
+
+    </RelativeLayout>
 
 </LinearLayout>

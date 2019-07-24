@@ -2,12 +2,16 @@ package com.zp.rx_java_t.view.diy
 
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.RectF
+import android.inputmethodservice.KeyboardView
 import android.util.AttributeSet
 import android.view.View
 import com.zp.rx_java_t.R
 import com.zp.rx_java_t.content.getColorById
 import com.zp.rx_java_t.content.getDisplay
 import com.zp.rx_java_t.content.getSize
+import com.zp.rx_java_t.content.showToast
 import com.zp.rx_java_t.util.L
 
 class DiyInputView : View {
@@ -20,6 +24,9 @@ class DiyInputView : View {
         const val FRAME_TXT_HIDDEN_TYPE_RECTANGLE = 0x200
         /** 三角形 */
         const val FRAME_TXT_HIDDEN_TYPE_TRIANGLE = 0x300
+
+        /** 默认 控件的高度 */
+        private const val DEFAULT_FRAME_HEIGHT = 120
 
         /** 默认 框 未输入的颜色 */
         private const val DEFAULT_FRAME_COLOR = R.color.black
@@ -48,6 +55,14 @@ class DiyInputView : View {
 
     }
 
+    // 每个框的实际宽
+    private var iFrameWidth = 0
+    // 每个框的实际高
+    private var iFrameHeight = 0
+    // 每个框距离顶部或底部的padding
+    private var iFragmentTopBottomPadding = 0
+
+
     // 框 未输入的颜色
     var frameColor = 0
     // 框 输入后的颜色
@@ -75,6 +90,15 @@ class DiyInputView : View {
     // 文字 隐藏的样式
     var frameTxtHiddenType = 0
 
+    private lateinit var framePaint: Paint
+    private lateinit var txtPaint: Paint
+    private lateinit var pwdPaint: Paint
+
+    private var frameRecgF: RectF? = null
+
+    private var keyBoardUtil: KeyBoardUtil? = null
+    private var keyBoardView: KeyboardView? = null
+
     constructor(context: Context?) : this(context, null)
     constructor(context: Context?, attrs: AttributeSet?) : this(context, attrs, 0)
     constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
@@ -92,12 +116,40 @@ class DiyInputView : View {
         frameTxtHiddenWidth = array.getDimension(R.styleable.DiyInputView_iFrameTxtHiddenWidth, DEFAULT_FRAME_TXT_HIDDEN_WIDTH)
         frameTxtHiddenType = array.getInteger(R.styleable.DiyInputView_iFrameTxtHiddenType, DEFAULT_FRAME_TXT_HIDDEN_TYPE)
         array.recycle()
+        init()
+    }
+
+    private fun init() {
+        framePaint = Paint(Paint.ANTI_ALIAS_FLAG).run {
+            this.style = Paint.Style.STROKE
+            this.color = frameColor
+            this.strokeWidth = frameWidth
+            this
+        }
+        txtPaint = Paint(Paint.ANTI_ALIAS_FLAG).run {
+            this.color = frameTxtColor
+            this.textSize = frameTxtSize
+            this
+        }
+        pwdPaint = Paint(Paint.ANTI_ALIAS_FLAG).run {
+            this.color = frameTxtColor
+            this.style = Paint.Style.FILL
+            this
+        }
+        frameRecgF = RectF()
+        keyBoardUtil = KeyBoardUtil(context)
+        keyBoardUtil?.keyBoardOutPutListener = { checkInput(it)}
+    }
+
+    fun bindBoardView(keyBoardView: KeyboardView) {
+        this.keyBoardView = keyBoardView
+        keyBoardUtil?.showKeyBoard(keyBoardView)
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         val width = getSize(context.getDisplay()[0], widthMeasureSpec)
-        val height = getSize(120, heightMeasureSpec)
+        val height = getSize(DEFAULT_FRAME_HEIGHT, heightMeasureSpec)
         L.e("width--->>>$width   height--->>>$height")
         setMeasuredDimension(width, height)
     }
@@ -108,5 +160,22 @@ class DiyInputView : View {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
+    }
+
+    private fun checkInput(inputType: String) {
+        when (inputType) {
+            KeyBoardUtil.KEY_BOARD_VAL_OK -> {
+                showToast("ok")
+            }
+            KeyBoardUtil.KEY_BOARD_VAL_DEL -> {
+                showToast("del")
+            }
+            KeyBoardUtil.KEY_BOARD_VAL_NOTHING -> {
+                showToast("nothing")
+            }
+            else -> {
+                showToast(inputType)
+            }
+        }
     }
 }
