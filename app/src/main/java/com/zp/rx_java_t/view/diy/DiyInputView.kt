@@ -199,6 +199,7 @@ class DiyInputView : View {
     /**
      * 具体查看 drawable-hdpi/diy_input_view.png
      * 图片中部分值在代码里面的实现：topBottomHeight = framePadding
+     *                               r = frameTxtHiddenWidth
      */
     override fun onDraw(canvas: Canvas?) {
         // 绘制矩形
