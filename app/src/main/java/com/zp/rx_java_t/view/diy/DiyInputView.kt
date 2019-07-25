@@ -196,6 +196,10 @@ class DiyInputView : View {
         setMeasuredDimension(width, height)
     }
 
+    /**
+     * 具体查看 drawable-hdpi/diy_input_view.png
+     * 图片中部分值在代码里面的实现：topBottomHeight = framePadding
+     */
     override fun onDraw(canvas: Canvas?) {
         // 绘制矩形
         framePaint.color = frameColor
@@ -308,5 +312,10 @@ class DiyInputView : View {
                 invalidate()
             }
         }
+    }
+
+    fun clear() {
+        texts.clear()
+        inputValueListener = null
     }
 }

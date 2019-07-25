@@ -41,4 +41,9 @@ class PwdActivity : BaseActivity(), DiyInputView.InputValueListener {
         showToast("输入完成：$value")
     }
 
+    override fun onDestroy() {
+        pwd_diyInputView.clear()
+        super.onDestroy()
+    }
+
 }

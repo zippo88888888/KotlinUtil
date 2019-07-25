@@ -10,27 +10,27 @@
     </Row>
 
     <Row>
-        <Key android:codes="10001" android:keyLabel="1" />
-        <Key android:codes="10002" android:keyLabel="2" />
-        <Key android:codes="10003" android:keyLabel="3" />
+        <Key android:codes="10001" android:keyLabel="1" android:isRepeatable="true"/>
+        <Key android:codes="10002" android:keyLabel="2" android:isRepeatable="true"/>
+        <Key android:codes="10003" android:keyLabel="3" android:isRepeatable="true"/>
     </Row>
 
     <Row>
-        <Key android:codes="10004" android:keyLabel="4" />
-        <Key android:codes="10005" android:keyLabel="5" />
-        <Key android:codes="10006" android:keyLabel="6" />
+        <Key android:codes="10004" android:keyLabel="4" android:isRepeatable="true"/>
+        <Key android:codes="10005" android:keyLabel="5" android:isRepeatable="true"/>
+        <Key android:codes="10006" android:keyLabel="6" android:isRepeatable="true"/>
     </Row>
 
     <Row>
-        <Key android:codes="10007" android:keyLabel="7" />
-        <Key android:codes="10008" android:keyLabel="8" />
-        <Key android:codes="10009" android:keyLabel="9" />
+        <Key android:codes="10007" android:keyLabel="7" android:isRepeatable="true"/>
+        <Key android:codes="10008" android:keyLabel="8" android:isRepeatable="true"/>
+        <Key android:codes="10009" android:keyLabel="9" android:isRepeatable="true"/>
     </Row>
 
     <Row>
         <!--<Key android:codes="10010" android:keyIcon="@drawable/ic_keyboard_del" android:isRepeatable="true"/>-->
         <Key android:codes="10010" android:keyLabel="Del" android:isRepeatable="true"/>
-        <Key android:codes="10000" android:keyLabel="0" />
+        <Key android:codes="10000" android:keyLabel="0" android:isRepeatable="true"/>
         <Key android:codes="11000" android:keyLabel="Ok" />
     </Row>
 

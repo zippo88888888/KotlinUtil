@@ -57,9 +57,9 @@
         <attr name="iFrameTxtHiddenWidth" format="dimension" />
         <!-- 文字输入后隐藏的样式 -->
         <attr name="iFrameTxtHiddenType">
-            <enum name="circle" value="0x100" /><!-- 圆形 -->
-            <enum name="rectangle" value="0x200" /><!-- 矩形 -->
-            <enum name="triangle" value="0x300" /><!-- 三角形 -->
+            <enum name="circle" value="0x100" />
+            <enum name="rectangle" value="0x200" />
+            <enum name="triangle" value="0x300" />
         </attr>
     </declare-styleable>
 
