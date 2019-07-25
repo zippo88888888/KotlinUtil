@@ -49,7 +49,17 @@ class DiyInputView : View {
         /** 默认 文字 隐藏后的宽度 */
         private const val DEFAULT_FRAME_TXT_HIDDEN_WIDTH = 30f
         /** 默认 文字 隐藏的样式 */
-        private const val DEFAULT_FRAME_TXT_HIDDEN_TYPE = FRAME_TXT_HIDDEN_TYPE_RECTANGLE
+        private const val DEFAULT_FRAME_TXT_HIDDEN_TYPE = FRAME_TXT_HIDDEN_TYPE_CIRCLE
+
+    }
+
+    interface InputValueListener {
+
+        // 正在输入
+        fun input(inputValue: String, value: String)
+
+        // 输入完成
+        fun inputEnd(value: String)
 
     }
 
@@ -57,6 +67,8 @@ class DiyInputView : View {
     private var iFrameWidth = 0
     // 每个框的实际高
     private var iFrameHeight = 0
+
+    var inputValueListener: InputValueListener? = null
 
     // 框 未输入的颜色
     var frameColor = 0
@@ -77,11 +89,19 @@ class DiyInputView : View {
     var frameTxtSize = 0f
 
     // 文字输入后是否隐藏
-    var frameTxtHidden = true
+    var frameTxtHidden = false
+        set(value) {
+            field = value
+            invalidate()
+        }
     // 文字 隐藏后的宽度（半径）
     var frameTxtHiddenWidth = 0f
     // 文字 隐藏的样式
     var frameTxtHiddenType = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     private lateinit var framePaint: Paint
     private lateinit var txtPaint: Paint
@@ -176,11 +196,6 @@ class DiyInputView : View {
         setMeasuredDimension(width, height)
     }
 
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-        super.onSizeChanged(w, h, oldw, oldh)
-    }
-
-
     override fun onDraw(canvas: Canvas?) {
         // 绘制矩形
         framePaint.color = frameColor
@@ -219,7 +234,6 @@ class DiyInputView : View {
 
     /**
      * 绘制密文
-     * 通过大矩形 RectF 简化计算
      */
     private fun drawHiddenSth(canvas: Canvas?, rectF: RectF, index: Int) {
         when (frameTxtHiddenType) {
@@ -242,11 +256,11 @@ class DiyInputView : View {
                 val oL = (iFrameHeight - (frameTxtHiddenWidth * 2)) / 2
                 val path = Path()
                 // 移动至顶底
-                path.moveTo(rectF.left + oL, rectF.top + oW)
+                path.moveTo(rectF.left + oW + frameTxtHiddenWidth, rectF.top + oL)
                 // 移动至 左下角
-                path.lineTo(0f, 0f)
+                path.lineTo(rectF.left + oW, rectF.top + oL + frameTxtHiddenWidth * 2)
                 // 移动至 右下角
-                path.lineTo(0f, 0f)
+                path.lineTo(rectF.left + oW + frameTxtHiddenWidth * 2, rectF.top + oL + frameTxtHiddenWidth * 2)
                 path.close()
                 canvas?.drawPath(path, pwdPaint)
             }
@@ -268,7 +282,7 @@ class DiyInputView : View {
     private fun checkInput(inputValue: String) {
         when (inputValue) {
             KeyBoardUtil.KEY_BOARD_VAL_OK -> {
-                showToast("输入完成：${getText()}")
+                inputValueListener?.inputEnd(getText())
             }
             KeyBoardUtil.KEY_BOARD_VAL_DEL -> {
                 if (textIndex - 1 >= 0) {
@@ -287,8 +301,9 @@ class DiyInputView : View {
                     textIndex ++
                     texts.add(textIndex - 1, inputValue)
                 }
+                inputValueListener?.input(inputValue, getText())
                 if (isInputDown()) {
-                    L.e("输入完成：${getText()}")
+                    inputValueListener?.inputEnd(getText())
                 }
                 invalidate()
             }

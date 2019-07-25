@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".ui.PwdActivity">
 
     <include layout="@layout/layout_tool_bar" />
+
+    <CheckBox
+        android:id="@+id/pwd_iFrameTxtHiddenCB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="iFrameTxtHidden"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="iFrameTxtHiddenType"/>
+
+    <RadioGroup
+        android:id="@+id/pwd_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/pwd_circleRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="circle"/>
+
+        <RadioButton
+            android:id="@+id/pwd_rectangleRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rectangle"/>
+
+        <RadioButton
+            android:id="@+id/pwd_triangleRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="triangle"/>
+
+    </RadioGroup>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,11 +57,22 @@
 
         <com.zp.rx_java_t.view.diy.DiyInputView
             android:id="@+id/pwd_diyInputView"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            app:iFrameColor="@color/black"
+            app:iFrameColor2="@color/baseColor"
+            app:iFrameLength="6"
+            app:iFramePadding="10dp"
+            app:iFrameRadius="2dp"
+            app:iFrameTxtColor="@color/baseColor"
+            app:iFrameTxtHidden="true"
+            app:iFrameTxtHiddenType="circle"
+            app:iFrameTxtHiddenWidth="8dp"
+            app:iFrameTxtSize="14sp"
+            app:iFrameWidth="1dp" />
 
         <android.inputmethodservice.KeyboardView
             android:id="@+id/pwd_keyBoardView"
@@ -29,8 +83,8 @@
             android:keyBackground="@drawable/key_board_selector"
             android:keyTextColor="@color/black"
             android:shadowColor="@color/transparent"
-            android:visibility="visible"
-            android:shadowRadius="0" />
+            android:shadowRadius="0"
+            android:visibility="visible" />
 
     </RelativeLayout>
 

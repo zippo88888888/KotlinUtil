@@ -15,10 +15,10 @@ android {
     buildTypes {
         debug {
             buildConfigField "Boolean", "IS_OFFICIAL", "false"
-            ndk {
-                //设置支持的SO库架构
-                abiFilters "armeabi-v7a"
-            }
+//            ndk {
+//                //设置支持的SO库架构
+//                abiFilters "armeabi-v7a"
+//            }
         }
         release {
             buildConfigField "Boolean", "IS_OFFICIAL", "true"
