@@ -150,14 +150,17 @@ class AnimButton : View {
         // 计算高
         val h = if (heightSpec == View.MeasureSpec.EXACTLY) heightSize
         else dip2px(DEFAULT_HEIGHT)
+        setMeasuredDimension(w, h)
+    }
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
         rW = w - paddingLeft - paddingRight
         rH = h - paddingTop - paddingBottom
 
         // 计算中心点
         centerX = rW / 2
         centerY = rH / 2
-        setMeasuredDimension(w, h)
     }
 
     override fun onDraw(canvas: Canvas?) {
