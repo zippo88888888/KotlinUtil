@@ -315,8 +315,13 @@ class DiyInputView : View {
         }
     }
 
-    fun clear() {
+    private fun clear() {
         texts.clear()
         inputValueListener = null
+    }
+
+    override fun onDetachedFromWindow() {
+        clear()
+        super.onDetachedFromWindow()
     }
 }

@@ -44,6 +44,13 @@
                 android:text="sys_dialog" />
 
             <Button
+                android:id="@+id/main_sys_http"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="http" />
+
+            <Button
                 android:id="@+id/main_sys_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -9,6 +9,7 @@ import com.zp.rx_java_t.base.BuilderDialog
 import com.zp.rx_java_t.base.SuperSysDialog
 import com.zp.rx_java_t.base.SystemDialog
 import com.zp.rx_java_t.content.*
+import com.zp.rx_java_t.http.HttpActivity
 import com.zp.rx_java_t.ui.ListActivity
 import com.zp.rx_java_t.ui.PwdActivity
 import com.zp.rx_java_t.util.L
@@ -66,6 +67,7 @@ class MainActivity : BaseActivity() {
                     .builder()
         }
 
+        main_sys_http.setOnClickListener { jumpActivity(HttpActivity::class.java) }
         main_sys_pwd.setOnClickListener { jumpActivity(PwdActivity::class.java) }
 
         main_diyView.bindView(diy_one_view_txt)

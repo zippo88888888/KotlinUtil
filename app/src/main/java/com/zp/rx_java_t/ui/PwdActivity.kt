@@ -42,7 +42,7 @@ class PwdActivity : BaseActivity(), DiyInputView.InputValueListener {
     }
 
     override fun onDestroy() {
-        pwd_diyInputView.clear()
+//        pwd_diyInputView.clear()
         super.onDestroy()
     }
 
