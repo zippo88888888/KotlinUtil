@@ -1,8 +1,8 @@
 package com.zp.rx_java_t.http.api
 
-import com.zp.rx_java_t.http.CommonBean
-import com.zp.rx_java_t.http.LoginBean
-import com.zp.rx_java_t.http.UserInfoBean
+import com.zp.rx_java_t.test_mvp.bean.CommonBean
+import com.zp.rx_java_t.test_mvp.bean.LoginBean
+import com.zp.rx_java_t.test_mvp.bean.UserInfoBean
 import io.reactivex.Observable
 import okhttp3.RequestBody
 import retrofit2.http.Body

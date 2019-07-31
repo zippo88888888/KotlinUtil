@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Kotlin</string>
+
+    <string name="loadding">拼命加载中&#8230;</string>
+    <string name="noMore">已经全部为你呈现了</string>
+    <string name="noAnyData">暂时没有数据</string>
+    <string name="noNetWork">网络好像抽风了，再试一次吧</string>
+
 </resources>
