@@ -28,11 +28,15 @@ class UserActivity : BaseActivity<UserModel, UserView, UserPresenter>(), UserVie
         setBarTitle("测试登录")
         SPUtil.remove(SP_KEY_TOKEN)
         user_loginBtn.setOnClickListener {
-            presenter?.login("17740894284", "1111114")
+            presenter?.login("17740894284", "111111")
         }
 
         user_infoBtn.setOnClickListener {
             presenter?.getUserInfo()
+        }
+
+        user_dowloadBtn.setOnClickListener {
+            presenter?.dowloadFile()
         }
     }
 
@@ -42,4 +46,9 @@ class UserActivity : BaseActivity<UserModel, UserView, UserPresenter>(), UserVie
         L.e("$loginBean")
     }
 
+    override fun dowloadProgress(byteDowload: String, fileSize: String, progress: Float) {
+        user_dowloadBar.progress = progress.toInt()
+        user_doloadLeftTxt.text = "${byteDowload}M / ${fileSize}M"
+        user_doloadRightTxt.text = "${progress.toInt()}% / 100%"
+    }
 }

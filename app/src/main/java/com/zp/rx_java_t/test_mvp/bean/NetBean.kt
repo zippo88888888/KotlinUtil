@@ -1,5 +1,6 @@
 package com.zp.rx_java_t.test_mvp.bean
 
+import android.os.Parcelable
 import java.io.Serializable
 
 open class BaseResponse : Serializable {
@@ -30,3 +31,4 @@ data class UserInfoBean(
         var realName: String = "",
         var levelTitle: String = ""
 ) : Serializable
+

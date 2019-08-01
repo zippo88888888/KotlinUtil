@@ -7,4 +7,6 @@ interface UserView : BaseView {
 
     fun loginSuccess(loginBean: LoginBean)
 
+    fun dowloadProgress(byteDowload: String, fileSize: String, progress: Float)
+
 }

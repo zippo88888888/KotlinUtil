@@ -5,9 +5,9 @@ import com.zp.rx_java_t.test_mvp.bean.LoginBean
 import com.zp.rx_java_t.test_mvp.bean.UserInfoBean
 import io.reactivex.Observable
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.http.*
 
 interface HttpApi {
 

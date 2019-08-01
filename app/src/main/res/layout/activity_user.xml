@@ -20,4 +20,42 @@
         android:layout_height="wrap_content"
         android:text="info"/>
 
+    <Button
+        android:id="@+id/user_dowloadBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dowload"/>
+
+    <ProgressBar
+        android:id="@+id/user_dowloadBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        android:progress="0"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/user_doloadLeftTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10MB/100MB"/>
+
+        <TextView
+            android:id="@+id/user_doloadRightTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            tools:text="10%/100%"/>
+
+    </FrameLayout>
+
 </LinearLayout>

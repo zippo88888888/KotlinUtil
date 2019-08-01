@@ -68,7 +68,7 @@ object MyFileUtil {
 
     private fun getPath(context: Context = getAppContext()): String? {
         if (storagePath == null) {
-            storagePath = context.getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).path + "/" + ROOT_NAME
+            storagePath = context.getExternalFilesDir(null).path + "/" + ROOT_NAME
             val file = File(storagePath)
             if (!file.exists()) {
                 if (!file.mkdirs()) {
