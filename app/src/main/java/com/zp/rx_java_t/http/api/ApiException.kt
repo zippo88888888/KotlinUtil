@@ -3,6 +3,7 @@ package com.zp.rx_java_t.http.api
 import com.google.gson.JsonParseException
 import com.google.gson.JsonSerializer
 import com.zp.rx_java_t.content.Content
+import com.zp.rx_java_t.content.IS_OFFICIAL
 import org.apache.http.conn.ConnectTimeoutException
 import org.json.JSONException
 import retrofit2.HttpException
@@ -63,6 +64,7 @@ class ApiException private constructor(var code: Int, throwable: Throwable) : Ex
                 is NullPointerException -> {
                     apiException = ApiException(NULL_POINTER_ERROR, e)
                     apiException.msg = "空指针异常"
+                    if (!IS_OFFICIAL) e.printStackTrace()
                 }
                 is javax.net.ssl.SSLHandshakeException -> {
                     apiException = ApiException(SSL_ERROR, e)
@@ -91,14 +93,17 @@ class ApiException private constructor(var code: Int, throwable: Throwable) : Ex
                 is ClassCastException -> {
                     apiException = ApiException(CAST_ERROR, e)
                     apiException.msg = "转换异常"
+                    if (!IS_OFFICIAL) e.printStackTrace()
                 }
                 is IllegalStateException -> {
                     apiException = ApiException(ILLEGAL_STATE_ERROR, e)
                     apiException.msg = "参数非法"
+                    if (!IS_OFFICIAL) e.printStackTrace()
                 }
                 else -> {
                     apiException = ApiException(UNKNOW_ERROR, e)
                     apiException.msg = "未知异常"
+                    if (!IS_OFFICIAL) e.printStackTrace()
                 }
             }
             return apiException
