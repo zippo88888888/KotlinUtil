@@ -26,6 +26,8 @@ object FileOpenUtil {
     // pdf
     private const val PDF_TYPE = "application/pdf"
 
+    private const val ERROR_MSG = "文件类型不匹配或找不到打开该文件类型的程序，打开失败"
+
     /**
      * 打开文件
      */
@@ -37,6 +39,7 @@ object FileOpenUtil {
             Content.XLS, Content.XLSX -> openXLS(item.path, context)
             Content.PPT, Content.PPTX -> openPPT(item.path, context)
             Content.PDF -> openPDF(item.path, context)
+            else -> showToast(ERROR_MSG)
         }
     }
 
@@ -81,12 +84,9 @@ object FileOpenUtil {
                 }
             })
         } catch (e: Exception) {
-            if (!IS_OFFICIAL) {
-                e.printStackTrace()
-            }
-            showToast("文件类型不匹配或找不到打开该文件类型的程序，打开失败")
+            if (!IS_OFFICIAL) e.printStackTrace()
+            showToast(ERROR_MSG)
         }
-
     }
 
 }

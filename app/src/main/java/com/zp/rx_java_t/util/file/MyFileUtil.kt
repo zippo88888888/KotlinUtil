@@ -135,7 +135,7 @@ object MyFileUtil {
             blockSize = if (file.isDirectory) getFileSizes(file)
             else getFileSize(file)
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (!IS_OFFICIAL) e.printStackTrace()
             L.e("获取文件大小--->>>获取失败!")
         } finally {
             return formetFileSize(blockSize, sizeType)
@@ -247,7 +247,7 @@ object MyFileUtil {
             outBuff.flush()
             success = true
         } catch (e: Exception) {
-            e.printStackTrace()
+            if (!IS_OFFICIAL) e.printStackTrace()
             success = false
         } finally {
             //关闭流

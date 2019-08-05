@@ -2,6 +2,11 @@ package com.zp.rx_java_t.content
 
 object Content {
 
+
+    const val SP_FILE_NAME = "zp_rx_java_t"
+    const val LOG_TAG = "APP_LOG"
+
+
     /** 刷新或正常状态  */
     const val REFRESH = 0x1
     /** 加载更多状态  */

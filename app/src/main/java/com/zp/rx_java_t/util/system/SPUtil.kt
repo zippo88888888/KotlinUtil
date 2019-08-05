@@ -67,7 +67,7 @@ object SPUtil {
      */
     fun getAll(): Map<String, *> =  getSP().all
 
-    private fun getSP() = getAppContext().getSharedPreferences(SP_FILE_NAME, Context.MODE_PRIVATE)
+    private fun getSP() = getAppContext().getSharedPreferences(Content.SP_FILE_NAME, Context.MODE_PRIVATE)
 
     /**
      * 创建一个解决SharedPreferencesCompat.apply方法的一个兼容类(内部类)

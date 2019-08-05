@@ -1,16 +1,15 @@
-package com.zp.rx_java_t
+package com.zp.rx_java_t.ui
 
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import com.zp.rx_java_t.R
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.base.BuilderDialog
 import com.zp.rx_java_t.base.SuperSysDialog
 import com.zp.rx_java_t.base.SystemDialog
 import com.zp.rx_java_t.content.*
 import com.zp.rx_java_t.test_mvp.ui.UserActivity
-import com.zp.rx_java_t.ui.ListActivity
-import com.zp.rx_java_t.ui.PwdActivity
 import com.zp.rx_java_t.util.system.L
 import com.zp.rx_java_t.util.system.Toaster
 import kotlinx.android.synthetic.main.activity_main.*

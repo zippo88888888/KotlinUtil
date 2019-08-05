@@ -7,12 +7,6 @@ import android.content.Context
 import java.lang.ref.WeakReference
 import java.util.*
 
-/**
- * 作者    ZP
- * 日期    2019/2/15
- * 包名    com.zp.rx_java_t.util
- * 描述
- */
 class AppManager {
 
     private var applicationCon: Context? = null
@@ -31,10 +25,9 @@ class AppManager {
         this.applicationCon = applicationCon
     }
 
-    fun getApplicationContext(): Context {
-        if (applicationCon == null) throw NullPointerException("请先调用\"init()\"方法")
-        return applicationCon!!
-    }
+    fun getApplicationContext() =
+            if (applicationCon == null) throw NullPointerException("请先调用\"init()\"方法")
+            else applicationCon!!
 
     @Synchronized
     fun addActivity(activity: WeakReference<Activity>?) {

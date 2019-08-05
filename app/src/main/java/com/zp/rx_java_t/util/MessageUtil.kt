@@ -10,7 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
-import com.zp.rx_java_t.MainActivity
+import com.zp.rx_java_t.ui.MainActivity
 import com.zp.rx_java_t.R
 import com.zp.rx_java_t.util.system.SPUtil
 import com.zp.rx_java_t.util.system.Toaster

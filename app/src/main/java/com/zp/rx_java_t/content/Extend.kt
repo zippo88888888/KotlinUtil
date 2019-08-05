@@ -32,9 +32,6 @@ import java.util.*
 /** 正式版---true；开发版---false */
 val IS_OFFICIAL = BuildConfig.IS_OFFICIAL
 
-const val SP_FILE_NAME = "zp_rx_java_t"
-const val LOG_TAG = "APP_LOG"
-
 // Context 相关 ===========================================================
 fun Context.jumpActivity(clazz: Class<*>, map: ArrayMap<String, Any>? = null) {
     startActivity(Intent(this, clazz).apply {
@@ -185,7 +182,7 @@ fun AppCompatActivity.checkFragmentByTag(fragmentTag: String) {
  * @param vpAdapter         FragmentPagerAdapter
  * @param viewPager         ViewPager
  */
-fun <T : Fragment> AppCompatActivity.getFragment(vpAdapter: FragmentPagerAdapter, viewPager: ViewPager): T? {
+fun <T : Fragment> AppCompatActivity.getFragmentByFPA(vpAdapter: FragmentPagerAdapter, viewPager: ViewPager): T? {
     val fragmentId = vpAdapter.getItemId(viewPager.currentItem)
     val tag = "android:switcher:${viewPager.id}:$fragmentId"
     return supportFragmentManager.findFragmentByTag(tag) as T
