@@ -17,4 +17,13 @@ object Content {
     const val REQUEST_OTHER_LOGIN_CODE = 501
 
 
+    // 文件类型
+    const val TXT = "txt"
+    const val DOC = "doc"
+    const val DOCX = "docx"
+    const val XLS = "xls"
+    const val XLSX = "xlsx"
+    const val PPT = "ppt"
+    const val PPTX = "pptx"
+    const val PDF = "pdf"
 }

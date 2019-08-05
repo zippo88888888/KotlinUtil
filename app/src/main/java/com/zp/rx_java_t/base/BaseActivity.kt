@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
-import com.zp.rx_java_t.util.AppManager
 import kotlinx.android.synthetic.main.layout_tool_bar.*
 
 /**

@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.zp.rx_java_t.R
 import com.zp.rx_java_t.base.BaseActivity
 import com.zp.rx_java_t.content.showToast
-import com.zp.rx_java_t.util.L
+import com.zp.rx_java_t.util.system.L
 import com.zp.rx_java_t.view.diy.DiyInputView
 import kotlinx.android.synthetic.main.activity_pwd.*
 

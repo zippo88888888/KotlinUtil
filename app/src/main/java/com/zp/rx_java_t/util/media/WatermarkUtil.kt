@@ -1,4 +1,4 @@
-package com.zp.rx_java_t.util
+package com.zp.rx_java_t.util.media
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Matrix
 import com.zp.rx_java_t.content.getAppContext
 import com.zp.rx_java_t.content.getDisplay
+import com.zp.rx_java_t.util.system.L
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
@@ -72,7 +73,7 @@ object WatermarkUtil {
         var thisArray = array
         if (thisArray == null || thisArray.isEmpty()) {
             val bitmap = BitmapFactory.decodeFile(watermarkPath)
-            thisArray = WatermarkUtil.calWatermarkByDisplay(videoWidth.toFloat(), videoHeight.toFloat(),
+            thisArray = calWatermarkByDisplay(videoWidth.toFloat(), videoHeight.toFloat(),
                     bitmap.width.toFloat(), bitmap.height.toFloat())
             bitmap.recycle()
         }

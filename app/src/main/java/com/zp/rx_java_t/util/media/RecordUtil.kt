@@ -1,7 +1,9 @@
-package com.zp.rx_java_t.util
+package com.zp.rx_java_t.util.media
 
 import android.media.MediaPlayer
 import android.media.MediaRecorder
+import com.zp.rx_java_t.util.system.L
+import com.zp.rx_java_t.util.file.MyFileUtil
 
 /**
  * 录音相关
@@ -20,7 +22,11 @@ class RecordUtil {
     /** 是否在播放录音 */
     var isPlaying = false
 
-    var autoPlayRecordListener: AutoPlayRecordListener? = null
+    /**
+     * 自动停止播放
+     * Boolean  是否是出错而停止的
+     */
+    var autoPlayRecordListener: ((Boolean) -> Unit)? = null
 
     private object BUILDER { val builder = RecordUtil() }
 
@@ -126,7 +132,7 @@ class RecordUtil {
         }
         isPlaying = false
         releasePlay()
-        autoPlayRecordListener?.stopPlay(isErrorEnd)
+        autoPlayRecordListener?.invoke(isErrorEnd)
     }
 
     /**
@@ -146,22 +152,14 @@ class RecordUtil {
     }
 
     /**
-     * 清除所有
+     * 释放所有资源
      */
-    fun clearAll() {
+    fun releaseAll() {
         releaseRecorder()
         releasePlay()
         path = null
         // 单列模式 一定要赋为空，否则内存泄漏
         autoPlayRecordListener = null
-    }
-
-    interface AutoPlayRecordListener {
-        /**
-         * 自动停止播放
-         * @param isErrorEnd 是否是出错而停止的
-         */
-        fun stopPlay(isErrorEnd: Boolean)
     }
 
 }

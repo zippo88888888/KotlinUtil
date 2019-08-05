@@ -6,7 +6,7 @@ import android.os.Message
 import android.support.v4.widget.NestedScrollView
 import android.util.AttributeSet
 import android.view.MotionEvent
-import com.zp.rx_java_t.util.L
+import com.zp.rx_java_t.util.system.L
 import java.lang.ref.SoftReference
 
 /**

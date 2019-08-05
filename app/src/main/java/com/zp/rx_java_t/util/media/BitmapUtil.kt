@@ -1,9 +1,10 @@
-package com.zp.rx_java_t.util
+package com.zp.rx_java_t.util.media
 
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
 import com.zp.rx_java_t.content.IS_OFFICIAL
+import com.zp.rx_java_t.util.system.L
 import java.io.FileOutputStream
 
 /**

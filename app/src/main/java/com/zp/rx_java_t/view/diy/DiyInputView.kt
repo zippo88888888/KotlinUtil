@@ -10,8 +10,7 @@ import com.zp.rx_java_t.R
 import com.zp.rx_java_t.content.getColorById
 import com.zp.rx_java_t.content.getDisplay
 import com.zp.rx_java_t.content.getSize
-import com.zp.rx_java_t.content.showToast
-import com.zp.rx_java_t.util.L
+import com.zp.rx_java_t.util.system.L
 import java.lang.StringBuilder
 
 

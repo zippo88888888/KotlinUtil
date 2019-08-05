@@ -1,4 +1,4 @@
-package com.zp.rx_java_t.util
+package com.zp.rx_java_t.test_mvp.base
 
 import android.annotation.SuppressLint
 import android.app.Activity

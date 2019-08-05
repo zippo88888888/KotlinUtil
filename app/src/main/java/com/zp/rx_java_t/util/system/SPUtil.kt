@@ -1,4 +1,4 @@
-package com.zp.rx_java_t.util
+package com.zp.rx_java_t.util.system
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -22,7 +22,7 @@ object SPUtil {
             is Long -> editor.putLong(key, any)
             else -> editor.putString(key, any.toString())
         }
-        SharedPreferencesCompat.apply(editor)
+        SPUtil.SharedPreferencesCompat.apply(editor)
     }
 
     /**
@@ -45,7 +45,7 @@ object SPUtil {
     fun remove(key: String) {
         val editor = getSP().edit()
         editor.remove(key)
-        SharedPreferencesCompat.apply(editor)
+        SPUtil.SharedPreferencesCompat.apply(editor)
     }
 
     /**
@@ -54,7 +54,7 @@ object SPUtil {
     fun clear() {
         val editor = getSP().edit()
         editor.clear()
-        SharedPreferencesCompat.apply(editor)
+        SPUtil.SharedPreferencesCompat.apply(editor)
     }
 
     /**

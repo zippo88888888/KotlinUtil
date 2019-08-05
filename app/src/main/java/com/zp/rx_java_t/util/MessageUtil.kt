@@ -12,14 +12,12 @@ import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
 import com.zp.rx_java_t.MainActivity
 import com.zp.rx_java_t.R
+import com.zp.rx_java_t.util.system.SPUtil
+import com.zp.rx_java_t.util.system.Toaster
 import org.jetbrains.annotations.NotNull
 
-/**
- * com.als.rx_java_t.util
- * Created by ZP on 2018/6/11.
- * description: 通知工具类
- * version: 1.0
- */
+@RequiresApi(Build.VERSION_CODES.N)
+@Deprecated("应该用不到")
 object MessageUtil {
 
     init {
@@ -39,30 +37,35 @@ object MessageUtil {
     /** 系统消息 ID */
     const val PET_XI_TONG_ID = "RX_JAVA_XI_TONG"
 
-    private val MSG_ID_ARRAYS = arrayOf(
-            PET_HU_DONG_ID,
-            PET_DIAN_ZAN_ID,
-            PET_KE_FU_ID,
-            PET_DING_DAN_ID,
-            PET_XI_TONG_ID
-    )
+    private val MSG_ID_ARRAYS by lazy {
+        arrayOf(
+                PET_HU_DONG_ID,
+                PET_DIAN_ZAN_ID,
+                PET_KE_FU_ID,
+                PET_DING_DAN_ID,
+                PET_XI_TONG_ID
+        )
+    }
 
-    private val MSG_NAME_ARRAYS = arrayOf(
-            "互动消息",
-            "点赞",
-            "客服、聊天",
-            "订单消息",
-            "系统消息"
-    )
+    private val MSG_NAME_ARRAYS by lazy {
+        arrayOf(
+                "互动消息",
+                "点赞",
+                "客服、聊天",
+                "订单消息",
+                "系统消息"
+        )
+    }
 
-    @RequiresApi(Build.VERSION_CODES.O)
-    private val MSG_IMPORTANCE_ARRAYS = arrayOf(
-            NotificationManager.IMPORTANCE_HIGH,
-            NotificationManager.IMPORTANCE_HIGH,
-            NotificationManager.IMPORTANCE_DEFAULT,
-            NotificationManager.IMPORTANCE_DEFAULT,
-            NotificationManager.IMPORTANCE_DEFAULT
-    )
+    private val MSG_IMPORTANCE_ARRAYS by lazy {
+        arrayOf(
+                NotificationManager.IMPORTANCE_HIGH,
+                NotificationManager.IMPORTANCE_HIGH,
+                NotificationManager.IMPORTANCE_DEFAULT,
+                NotificationManager.IMPORTANCE_DEFAULT,
+                NotificationManager.IMPORTANCE_DEFAULT
+        )
+    }
 
     /**
      * 创建消息类别 Android 8.0以上

@@ -1,8 +1,6 @@
 package com.zp.rx_java_t.test_mvp.presenter
 
-import android.os.Message
 import com.zp.rx_java_t.content.showToast
-import com.zp.rx_java_t.http.api.MyHttpClient
 import com.zp.rx_java_t.http.observer.CommonObserver
 import com.zp.rx_java_t.http.observer.DowloadObserver
 import com.zp.rx_java_t.test_mvp.base.BasePresenterImpl
@@ -11,15 +9,8 @@ import com.zp.rx_java_t.test_mvp.bean.LoginBean
 import com.zp.rx_java_t.test_mvp.bean.UserInfoBean
 import com.zp.rx_java_t.test_mvp.model.UserModel
 import com.zp.rx_java_t.test_mvp.view.UserView
-import com.zp.rx_java_t.util.L
-import com.zp.rx_java_t.util.MyFileUtil
-import com.zp.rx_java_t.util.Toaster
-import io.reactivex.Observer
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
-import io.reactivex.schedulers.Schedulers
-import okhttp3.ResponseBody
+import com.zp.rx_java_t.util.system.L
+import com.zp.rx_java_t.util.file.MyFileUtil
 import java.io.*
 import java.text.DecimalFormat
 

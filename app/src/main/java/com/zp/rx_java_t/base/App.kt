@@ -1,8 +1,7 @@
 package com.zp.rx_java_t.base
 
 import android.app.Application
-import com.zp.rx_java_t.util.AppManager
-import com.zp.rx_java_t.util.Toaster
+import com.zp.rx_java_t.test_mvp.base.AppManager
 
 /**
  * com.zp.rx_java_t.base

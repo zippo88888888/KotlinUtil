@@ -2,7 +2,7 @@ package com.zp.rx_java_t.http.api
 
 import android.support.v4.util.ArrayMap
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import com.zp.rx_java_t.util.L
+import com.zp.rx_java_t.util.system.L
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.CallAdapter

@@ -12,7 +12,6 @@ import com.zp.rx_java_t.R
 import com.zp.rx_java_t.content.getTextValue
 import com.zp.rx_java_t.content.showToast
 import com.zp.rx_java_t.test_mvp.ui.LoadDialog
-import com.zp.rx_java_t.util.AppManager
 import kotlinx.android.synthetic.main.layout_tool_bar.*
 import java.lang.ref.WeakReference
 

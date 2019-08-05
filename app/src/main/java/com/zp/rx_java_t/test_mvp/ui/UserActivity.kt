@@ -8,8 +8,8 @@ import com.zp.rx_java_t.test_mvp.bean.LoginBean
 import com.zp.rx_java_t.test_mvp.model.UserModel
 import com.zp.rx_java_t.test_mvp.presenter.UserPresenter
 import com.zp.rx_java_t.test_mvp.view.UserView
-import com.zp.rx_java_t.util.L
-import com.zp.rx_java_t.util.SPUtil
+import com.zp.rx_java_t.util.system.L
+import com.zp.rx_java_t.util.system.SPUtil
 import kotlinx.android.synthetic.main.activity_user.*
 
 class UserActivity : BaseActivity<UserModel, UserView, UserPresenter>(), UserView {

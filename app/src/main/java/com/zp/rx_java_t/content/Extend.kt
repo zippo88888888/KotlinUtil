@@ -20,9 +20,9 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.zp.rx_java_t.BuildConfig
 import com.zp.rx_java_t.R
-import com.zp.rx_java_t.util.AppManager
-import com.zp.rx_java_t.util.L
-import com.zp.rx_java_t.util.Toaster
+import com.zp.rx_java_t.test_mvp.base.AppManager
+import com.zp.rx_java_t.util.system.L
+import com.zp.rx_java_t.util.system.Toaster
 import java.io.File
 import java.io.Serializable
 import java.lang.Exception
@@ -241,6 +241,16 @@ fun getTextValue(any: Any) = try {
     }
 } catch (e: Exception) {
     any.toString()
+}
+
+/**
+ * 检查String是否为空
+ * true 表示是空的
+ */
+fun String?.isNull() = if (this.isNullOrEmpty()) true
+else { // 去除空格 去除回车
+    val str = this.replace(" ".toRegex(), "")
+    str.isEmpty()
 }
 
 /**

@@ -2,7 +2,6 @@ package com.zp.rx_java_t.http.observer
 
 import android.os.Handler
 import android.os.Message
-import com.zp.rx_java_t.util.L
 import okhttp3.ResponseBody
 import java.io.*
 import java.lang.ref.WeakReference
