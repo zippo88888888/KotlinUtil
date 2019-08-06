@@ -160,6 +160,8 @@ abstract class BaseFragment<M : BaseModel, V : BaseView, P : BasePresenter<M, V>
 
     override fun getViewContext() = fragmentActivity ?: activity!!
 
+    override fun getViewFragment() = this
+
     override fun isRun() = isFragmentVisible
 
     final override fun exit() = Unit

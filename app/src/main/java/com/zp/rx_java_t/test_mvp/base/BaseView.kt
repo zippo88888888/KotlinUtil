@@ -1,6 +1,7 @@
 package com.zp.rx_java_t.test_mvp.base
 
 import android.content.Context
+import android.support.v4.app.Fragment
 
 interface BaseView {
 
@@ -18,6 +19,11 @@ interface BaseView {
      * 获取 Context
      */
     fun getViewContext(): Context
+
+    /**
+     * 获取 Fragment
+     */
+    fun getViewFragment(): Fragment?
 
     /**
      * 当前Activity或Fragment是否在前台运行

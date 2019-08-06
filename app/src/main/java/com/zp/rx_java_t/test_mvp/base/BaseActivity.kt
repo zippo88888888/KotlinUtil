@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
@@ -122,6 +123,8 @@ abstract class BaseActivity<M : BaseModel, V : BaseView, P : BasePresenter<M, V>
     }
 
     override fun getViewContext() = this
+
+    override fun getViewFragment(): Fragment? = null
 
     override fun isRun() = isActive
 
