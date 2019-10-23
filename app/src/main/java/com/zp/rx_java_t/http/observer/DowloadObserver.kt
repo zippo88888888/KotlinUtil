@@ -10,6 +10,9 @@ import java.lang.ref.WeakReference
  * 文件下载  https://www.jianshu.com/p/2659bbe0df16
  * @property fileDir String     文件目录
  * @property fileName String    文件名称
+ *
+ *
+ * Kotlin 委托属性  https://www.jianshu.com/p/07664dc4c51a
  */
 abstract class DowloadObserver(private var fileDir: String, private var fileName: String) : BaseObserver<ResponseBody>() {
 

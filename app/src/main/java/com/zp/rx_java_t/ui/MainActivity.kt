@@ -67,7 +67,7 @@ class MainActivity : BaseActivity() {
 
         main_sys_http.setOnClickListener { jumpActivity(UserActivity::class.java) }
         main_sys_pwd.setOnClickListener { jumpActivity(PwdActivity::class.java) }
-
+        main_musicBtn.setOnClickListener { jumpActivity(MusicActivity::class.java) }
         main_diyView.bindView(diy_one_view_txt)
         main_animBtn.setOnClickListener {
             main_diyView.startAnim()

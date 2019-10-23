@@ -63,4 +63,30 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="BatteryView">
+        <!-- 外框的颜色 -->
+        <attr name="bv_outRectColor" format="color" />
+        <!-- 外框的宽度 -->
+        <attr name="bv_outRectWidth" format="dimension" />
+        <!-- 内框的颜色 -->
+        <attr name="bv_innerRectColor" format="color" />
+        <!-- 內外框之间的边距 -->
+        <attr name="bv_outInnerPadding" format="dimension" />
+        <!-- 电池正极的宽 -->
+        <attr name="bv_anodeWidth" format="dimension" />
+        <!-- 电池正极的高 -->
+        <attr name="bv_anodeHeight" format="dimension" />
+        <!-- 电池正极的方向 -->
+        <attr name="bv_anodeOrientation">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="top" value="2" />
+            <enum name="bottom" value="3" />
+        </attr>
+        <!-- 弧度 -->
+        <attr name="bv_radian" format="dimension" />
+        <!-- 电池电量 0到100 -->
+        <attr name="bv_value" format="integer" />
+    </declare-styleable>
+
 </resources>

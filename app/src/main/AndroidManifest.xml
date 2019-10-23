@@ -14,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.zp.rx_java_t.test_mvp.ui.UserActivity"></activity>
+        <service android:name=".view.music.MusicService" />
+        <activity android:name=".ui.MusicActivity" />
+        <activity android:name=".test_mvp.ui.UserActivity" />
         <activity android:name=".http.HttpActivity" />
         <activity android:name=".ui.PwdActivity" />
 

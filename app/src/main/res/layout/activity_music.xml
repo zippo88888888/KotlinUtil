@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MusicActivity">
+
+    <include
+        android:id="@+id/music_include"
+        layout="@layout/layout_tool_bar" />
+
+    <Button
+        android:id="@+id/music_playBtn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="播放"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/music_include" />
+
+    <com.zp.rx_java_t.view.music.MusicView
+        android:id="@+id/musicView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <com.zp.rx_java_t.view.diy.BatteryView
+        android:id="@+id/musicBatteryView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bv_anodeOrientation="right"
+        app:bv_innerRectColor="@color/baseColor"
+        app:bv_outRectColor="@color/gray"
+        app:bv_value="85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+</android.support.constraint.ConstraintLayout>

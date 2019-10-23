@@ -66,6 +66,12 @@
                 app:animButtonTxtSize="15sp" />
 
             <Button
+                android:id="@+id/main_musicBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Music"/>
+
+            <Button
                 android:id="@+id/main_animBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

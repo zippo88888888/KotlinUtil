@@ -295,24 +295,21 @@ object MyFileUtil {
     /**
      * 获取缓存目录的大小
      */
-    fun getCacheSize(block: (Boolean, Double) -> Unit, sizeType: Int = SIZE_TYPE_MB) {
+    fun getCacheSize(sizeType: Int = SIZE_TYPE_MB): Double {
+        var size = 0.0
         try {
-            Thread {
-                var size = 0.0
-                CACHE_LIST.forEach {
-                    if (File(it).exists()) {
-                        val filesSize = getFileOrFilesSize(it, sizeType)
-                        L.e("$it 大小 $filesSize")
-                        size += filesSize
-                    }
+            CACHE_LIST.forEach {
+                if (File(it).exists()) {
+                    val filesSize = getFileOrFilesSize(it, sizeType)
+                    L.e("$it 大小 $filesSize")
+                    size += filesSize
                 }
-                block.invoke(true, size)
-            }.start()
+            }
         } catch (e: Exception) {
             if (!IS_OFFICIAL) e.printStackTrace()
-            block.invoke(false, 0.0)
+        } finally {
+            return size
         }
-
     }
 
     /**
