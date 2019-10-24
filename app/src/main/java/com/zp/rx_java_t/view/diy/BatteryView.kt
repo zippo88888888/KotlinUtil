@@ -153,6 +153,8 @@ class BatteryView : View {
 
     override fun onDraw(canvas: Canvas?) {
         change(width, height)
+        paint?.color = outRectColor
+        paint?.style = Paint.Style.STROKE
         // 画外框
         canvas?.drawRoundRect(outRectF, radian, radian, paint)
         // 画电池正极
