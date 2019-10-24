@@ -18,6 +18,16 @@ class MusicActivity : BaseActivity(), ServiceConnection {
 
     override fun init(savedInstanceState: Bundle?) {
         setBarTitle("Music")
+        music_countView.apply {
+            maxValue = 100
+            setValue(85)
+            addClick = {
+                musicBatteryView.batteryValue = it
+            }
+            subtractClick = {
+                musicBatteryView.batteryValue = it
+            }
+        }
         music_playBtn.setOnClickListener {
             val intent = Intent(this, MusicService::class.java)
             bindService(intent, this, BIND_AUTO_CREATE)

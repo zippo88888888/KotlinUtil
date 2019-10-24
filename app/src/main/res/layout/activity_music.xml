@@ -27,17 +27,32 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <com.zp.rx_java_t.view.diy.BatteryView
-        android:id="@+id/musicBatteryView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:bv_anodeOrientation="right"
-        app:bv_innerRectColor="@color/baseColor"
-        app:bv_outRectColor="@color/gray"
-        app:bv_value="85"
+        android:orientation="vertical"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.zp.rx_java_t.view.diy.BatteryView
+            android:id="@+id/musicBatteryView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bv_anodeOrientation="right"
+            app:bv_innerRectColor="@color/baseColor"
+            app:bv_outRectColor="@color/gray"
+            app:bv_value="85" />
+
+        <com.zp.rx_java_t.view.CountView
+            android:layout_marginTop="10dp"
+            android:id="@+id/music_countView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>
