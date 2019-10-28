@@ -14,7 +14,7 @@ https://github.com/Krupen/FabulousFilter <br>
 解决 新版 AS xml格式问题
 File>Settings>Editor>Code Style>XML>Set from...（右上角）>Predefined Style>Android然后Apply，再Ctrl+Alt+L 重试 <br>
 
-动画：
+动画：<br>
 https://github.com/skydoves/DoubleLift <br>
 https://github.com/skydoves/IndicatorScrollView <br>
 https://github.com/ibrahimsn98/SmoothBottomBar <br>
