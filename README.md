@@ -5,6 +5,11 @@ https://github.com/umano/AndroidSlidingUpPanel <br>
 https://github.com/qhutch/BottomSheetLayout <br>
 https://github.com/fish-4-fun/like-google-maps <br><br>
 
+https://github.com/trafi/anchor-bottom-sheet-behavior <br>
+https://github.com/miguelhincapie/CustomBottomSheetBehavior <br>
+https://github.com/cesardeazevedo/react-native-bottom-sheet-behavior <br>
+https://github.com/skimarxall/AnchorSheetBehavior <br>
+
 https://github.com/natario1/BottomSheetCoordinatorLayout <br>
 https://github.com/reline/Google-Maps-BottomSheet <br>
 https://github.com/trafi/anchor-bottom-sheet-behavior <br>
