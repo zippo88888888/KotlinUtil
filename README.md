@@ -3,8 +3,10 @@
 PS:<br>
 https://github.com/umano/AndroidSlidingUpPanel <br>
 https://github.com/qhutch/BottomSheetLayout <br>
-https://github.com/fish-4-fun/like-google-maps <br><br>
+https://github.com/fish-4-fun/like-google-maps <br>
+https://github.com/miguelhincapie/CustomBottomSheetBehavior<br><br>
 
+https://github.com/HeyAlex/CornerSheet<br>
 https://github.com/trafi/anchor-bottom-sheet-behavior <br>
 https://github.com/miguelhincapie/CustomBottomSheetBehavior <br>
 https://github.com/cesardeazevedo/react-native-bottom-sheet-behavior <br>
